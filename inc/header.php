@@ -19,7 +19,7 @@
           <a class="nav-link" href="contact.php">Contact Us</a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link" href="#">About Us</a>
+          <a class="nav-link" href="about.php">About Us</a>
         </li>
         <div class="d-flex">
          <button class="btn btn-outline-success shadow-none" type="submit">Search</button>

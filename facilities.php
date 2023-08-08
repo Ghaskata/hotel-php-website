@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php require('./inc/links.php'); ?>
+    <?php require('inc/links.php'); ?>
     <title>TJ Hotel - Facilities</title>
     <style>
         .faci:hover{
@@ -24,7 +24,7 @@
 
 <div class="my-5 mx-4">
     <h1 class="h-font text-center">OUR FACILITIES</h1>
-    <div class="h-line bg-dark"></div>
+    <div class="bg-dark h-line mb-4"></div>
     <p class="text-center mt-4">
         this is peragraph about the facilities , this is peragraph about the facilities.<br>
         this is peragraph about the facilities this is .<br>
