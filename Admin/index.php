@@ -17,14 +17,14 @@
 </head>
 <body class="bg-white h-100 pt-4">
     <div class="container px-3 py-4 mx-auto my-5 bg-light shadow w-75">
-        <h1 class="text-center h-font mt-3">Admin Panel</h1>
+        <h1 class="text-center h-font mt-3">Admin Login</h1>
         <div class="bg-dark h-line mb-4"></div>
         <div class="row">
         <div class="col-6 mx-auto my-auto">
             <form method="POST">
                 <div class="form-group mb-4">
                     <label for="aname" class="fs-5 mb-1">Admin Name</label>
-                    <input type="text" name="aname" class="form-control shadow-none" id="aname" placeholder="Enter Admin Name" required>
+                    <input type="text" name="aname" class="form-control shadow-none" id="aname" placeholder="Enter Admin Name" autocomplete="off" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="password" class="fs-5 mb-1">Password</label>
@@ -39,7 +39,7 @@
 <?php
     if (isset($_POST['login'])) {
         $query="SELECT * FROM `admintbl` WHERE `name`= ? AND `password`= ? ";         
-        $values=[$_POST['aname'],$_POST['password']];
+        $values=[$_POST['aname'],md5($_POST['password'])];
         $res = select($query,$values,"ss");
         if($res->num_rows==1){
             $row=mysqli_fetch_assoc($res);
