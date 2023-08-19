@@ -9,6 +9,7 @@
         die("not connected".mysqli_connect_eror());
     }
 
+
     function select($sql,$values,$datatypes){
         $con=$GLOBALS['con'];
         if($stmt = mysqli_prepare($con,$sql)){
@@ -28,6 +29,7 @@
         }
     }
 
+    
     function close_connection(){
         mysqli_close($_GLOBALS['$con']);
     }

@@ -18,9 +18,13 @@
     height: 100%;
 }
 
+
 @media screen and (max-width:992px) {
     #dashboard-menu{
         height: auto;
         width: 100%;
+    }
+    #dashboard-main-content{
+        margin-top: 60px;
     }
 }

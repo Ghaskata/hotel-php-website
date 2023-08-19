@@ -1,47 +1,81 @@
-*{
-    font-family: 'Poppins', sans-serif;
+* {
+  font-family: "Poppins", sans-serif;
 }
-.h-font{
-    font-family: 'Merienda', cursive;
+.h-font {
+  font-family: "Merienda", cursive;
 }
-.h-line{
-    width: 150px;
-    margin: 0 auto;
-    height: 1.7px;
+.h-line {
+  width: 150px;
+  margin: 0 auto;
+  height: 1.7px;
 }
 /* style=" width: 150px;margin: 0 auto;height: 1.7px;" */
 
-.custom-btn{
-    background: #2ec1ac;
+.custom-btn {
+  background: #39d7bf;
 }
-.custom-btn:hover{
-    background: #279e7e;
+.custom-btn:hover {
+  background: rgb(3, 55, 57);
+  transform: scale(1.1);
 }
 .hero-img-div {
-    position: relative;
-    background-color:rgba(225, 188, 77, 0.3) ;
-  }
-  
-.hero-text{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background-color: black;
-    color: white;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-.hero-img{
-      width: 100%;
-      height: 90vh;
-      z-index: -1;
-      position: relative;
-  }
-
-.availability-form{
-    margin-top: -50px;
-    z-index:1;
-    position: relative;
-    margin-bottom: 50px;
+  position: relative;
+  background-color: rgb(95, 77, 23);
+  opacity: 0.5;
 }
 
+.hero-text {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.hero-img {
+  width: 100%;
+  height: 90vh;
+  z-index: -1;
+  position: relative;
+}
+
+.availability-form {
+  margin-top: -60px;
+  z-index: 1;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.card-title {
+  font-size: 25px;
+  top: 45%;
+  left: 37%;
+  position: absolute;
+  text-align: center;
+}
+.card-img-overlay {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: rgba(0, 0, 0.5, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: 0.6s;
+}
+.card-img-overlay:hover {
+  opacity: 1;
+}
+
+
+.custom-alert{
+  position: fixed;
+  top: 100px;
+  right: 25px;
+  
+}

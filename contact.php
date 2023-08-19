@@ -17,6 +17,23 @@
         border-bottom-color: #2ec1ac;
         transition: all 0.5s;
     }
+    #contact-img{
+        border-top-left-radius: 60px;
+        border-bottom-left-radius: 60px;
+    }
+    @media screen and (max-width:992px) {
+        #contact-img{
+            border-top-left-radius: 60px;
+            border-top-right-radius: 60px;
+            border-bottom-left-radius: 0;
+
+        }
+    }
+    .contact-card:hover{
+        border-top-color: rgb(12, 184, 184) !important;
+        transform: scale(1.09);
+        transition: all 0.5s;
+    }
     </style>
 </head>
 
@@ -33,46 +50,86 @@
     <div class="bg-dark h-line mb-4"></div>
 </div>
 
+<div class="container-fluid px-5 mx-auto">
+    <div class="row m-auto">
+        <div class="col-lg-4 col-12 mb-4 m-auto">
+            <div class="m-1 shadow px-3 py-2 rounded border-top border-4 border-secondary contact-card">
+                <h3 class="my-3">Surat Branch</h3>
+                <h5>Phone No : <span class="fs-6 fw-light">9978564534</span> </h5>
+                <h5>Email : <span class="fs-6 fw-light">suratTAJhotel@gmail.com</span> </h5>
+                <h5>Address : <span class="fs-6 fw-light">Taj Hotel , Surat - Mumbai Haighway Rd, GIDC Bhat , Surat , Gujarat 394520</span></h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12 mb-4 m-auto">
+            <div class="m-1 shadow px-3 py-2 rounded border-top border-4 border-secondary contact-card">
+                <h3 class="my-3">Mumbai Branch</h3>
+                <h5>Phone No : <span class="fs-6 fw-light">9978564534</span> </h5>
+                <h5>Email : <span class="fs-6 fw-light">suratTAJhotel@gmail.com</span> </h5>
+                <h5>Address : <span class="fs-6 fw-light">Taj Hotel , Surat - Mumbai Haighway Rd, GIDC Bhat , Surat , Gujarat 394520</span></h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-12 mb-4 m-auto">
+            <div class="m-1 shadow px-3 py-2 rounded border-top border-4 border-secondary contact-card">
+                <h3 class="my-3">London Branch</h3>
+                <h5>Phone No : <span class="fs-6 fw-light">9978564534</span> </h5>
+                <h5>Email : <span class="fs-6 fw-light">suratTAJhotel@gmail.com</span> </h5>
+                <h5>Address : <span class="fs-6 fw-light">Taj Hotel , Surat - Mumbai Haighway Rd, GIDC Bhat , Surat , Gujarat 394520</span></h5>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div>
     <div class="row my-4 mx-4">
-        <div class="col-md-6 col-lg-6 col-12 bg-light">
-            <img src="images\image_6.jpg" alt="" width="100%" class="">
+        <div class="col-lg-6 col-12 bg-light p-0">
+            <img src="images\food-1.jpg" alt="" width="100%" id="contact-img">
         </div>
-        <div class="col-md-6 col-lg-6 col-12 bg-white">
-            <div class="container w-75 py-5">
-                <h2 class="h-font text-center">Send Your Enquiries</h2>
-                <form>
+        <div class="col-lg-6 col-12 bg-white shadow">
+            <div class="container w-75 pt-5 py-3">
+                <h2 class="h-font text-center fs-1">Reach Out To Us</h2>
+                <form method="POST">
                     <div class="form-group mt-5">
-                        <label for="uname">Full Name</label>
-                        <input type="text" id="uname" class="input form-control shadow-none">
+                        <label class="fs-5" for="name">Full Name</label>
+                        <input type="text" id="name" name="name" class="input form-control shadow-none" required>
                     </div>
                     <div class="form-group mt-4">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="input form-control shadow-none">
+                        <label class="fs-5" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="input form-control shadow-none" required>
                     </div>
                     <div class="form-group mt-4">
-                        <label for="phone">Phone</label>
-                        <input type="text" id="phone" class="input form-control shadow-none">
+                        <label class="fs-5" for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" class="input form-control shadow-none" required>
                     </div>
-                    <div class="form-group mt-4">
-                        <label for="category">Category</label>
-                        <select name="category" id="category" class="input form-control shadow-none">
-                            <option value=""></option>
-                            <option value="Rooms">Rooms</option>
-                            <option value="Book Hotel For Event">Book Hotel For Event</option>
-                            <option value="Partner With Us">Partner With Us</option>
-                            <option value="Careers">Careers</option>
-                        </select>
+                    <div class="form-group mt-4 mb-5">
+                        <label class="fs-5" for="msg">Message</label>  
+                        <input type="text" id="msg" name="msg" class="input form-control shadow-none" required>
                     </div>
-                    <div class="form-group mt-4">
-                        <label for="msg">Message</label>  
-                        <input type="text" id="msg" class="input form-control shadow-none">
-                    </div>
+                    <button type="submit" name="send" class="btn btn-primary px-4 py-2 fs-5 mt-4 rounded-pill">Send Message</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<?php
+if (isset($_POST['send'])) {
+    $name=addslashes($_POST['name']);
+    $email=addslashes($_POST['email']);
+    $subject=addslashes($_POST['subject']);
+    $msg=addslashes($_POST['msg']);
+
+
+    $sql="INSERT INTO `user_query`(`name`, `email`, `subject`, `message`) VALUES ('$name','$email','$subject','$msg')";
+    $res=mysqli_query($GLOBALS['con'],$sql);
+    if ($res) {
+        alert("success","Your Message has been Send Succesfully");
+    }
+    else{
+        alert("error","Server Down ! Try again Later .");
+    }
+}   
+?>
+
 
 <!-- footer -->
 <?php
