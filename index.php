@@ -43,7 +43,7 @@
     </div>
     <div class="carousel-caption d-none d-md-block"style="top:5%;">
       <h2 class="mt-4 mb-5 text-light" style="font-family:cursive;">Life Is A Beautiful Journey , Live It Well</h2>
-      <h5 class="text-white pt-4 fw-bold" style="font-size: 70px;font-family:'Times New Roman', Times, serif;">Amazing Services , Location & Facilities</h5>
+      <h5 class="text-white pt-4" style="font-size: 90px;font-family:'Times New Roman', Times, serif;">Amazing Services , Location & Facilities</h5>
       <p class="m-3 pb-1 text-white">Best Place To Stay</p>
     </div>
   </div>
@@ -146,7 +146,6 @@
   require('./inc/footer.php');
 ?>
 <!-- footer end -->
-
     <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -17,6 +17,66 @@ function alert($type,$msg){
 alert;
 }
 
+function simpleAlert($title,$text,$icon){
+    echo<<<simple
+    <script>
+    Swal.fire({
+        title: '$title',
+        text: '$text',
+        icon: '$icon',
+        confirmButtonText: 'Ok'
+      });
+    </script>
+simple;
+}
+
+function timerAlert($icon,$title,$timer){
+    echo<<<time
+    <script>
+    Swal.fire({
+        position: 'top-end',
+        icon: '$icon',
+        title: '$title' ,
+        showConfirmButton: false,
+        timer: $timer
+      });
+    </script>
+time;
+}
+
+function con_canAlert(){
+    echo<<<confirm_cancle
+    <script>
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'It has been deleted.',
+            'success'
+          )
+        }
+      });
+    </script>
+confirm_cancle;
+}
+
+function deleteAlert(){
+    echo<<<time
+    <script>
+    Swal.fire('are you sure to delete this message ? ',{
+        buttons: ['Cancle','Delete Now']
+      });
+    </script>
+time;
+}
 
 function redirect($url) {   
     echo "<script type='text/javascript'>

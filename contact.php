@@ -26,7 +26,6 @@
             border-top-left-radius: 60px;
             border-top-right-radius: 60px;
             border-bottom-left-radius: 0;
-
         }
     }
     .contact-card:hover{
@@ -120,12 +119,13 @@ if (isset($_POST['send'])) {
 
 
     $sql="INSERT INTO `user_query`(`name`, `email`, `subject`, `message`) VALUES ('$name','$email','$subject','$msg')";
-    $res=mysqli_query($GLOBALS['con'],$sql);
+    $res=mysqli_query($con,$sql);
     if ($res) {
-        alert("success","Your Message has been Send Succesfully");
+        // alert("success","Your Message has been Send Succesfully");
+        timerAlert('success','Your Message Has Been send Succesfully',1500);
     }
     else{
-        alert("error","Server Down ! Try again Later .");
+        simpleAlert('ERROR!',"Someting Went's Wrong","error");
     }
 }   
 ?>

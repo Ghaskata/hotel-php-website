@@ -6,7 +6,9 @@
     margin: 0 auto;
     height: 1.7px;
 }
-
+.nav-item:focus,.nav-item:hover{
+    background-color: blue;
+}
 .custom-alert{
     position: fixed;
     top: 25px;

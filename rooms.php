@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require('inc/links.php'); ?>
     <title>TJ Hotel - ROOMS</title>
+    <style>
+      .card:hover{
+        transform: scale(1.03);
+        transition: all 0.3s; 
+        
+      }
+    </style>
 </head>
 <body class="bg-light">
 
@@ -81,7 +88,7 @@
           <div class="card shadow-lg" style="max-width:350px;">
             <img src="images\rooms\r1.jpg" class="card-img-top ">
             <div class="card-body">
-              <h5 class="card-title mb-3">Standard Rooms</h5>
+              <h5 class="room-card-title mb-3">Standard Rooms</h5>
               <h6 class="mb-4"> ₹ 500 per night </h6> 
               <p class="card-text">Perfect for the single person and for couple.A standard room can accommodate up to two guests.
                     The room may also have a small sitting area, such as a sofa or an armchair.</p>
@@ -167,7 +174,7 @@
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\r1.jpg" class="card-img-top ">
         <div class="card-body">
-          <h5 class="card-title mb-3">Standard Rooms</h5>
+          <h4 class="room-card-title mb-3">Standard Rooms</h4>
           <h6 class="mb-4"> ₹ 500 per night </h6> 
           <p class="card-text">Perfect for the single person and for couple.A standard room can accommodate up to two guests.
               The room may also have a small sitting area, such as a sofa or an armchair.</p>
@@ -193,7 +200,7 @@
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\c5.jpg" class="card-img-top ">
         <div class="card-body">
-          <h5 class="card-title mb-3">Connect Room</h5>
+          <h4 class="room-card-title mb-3">Connect Room</h4>
           <h6 class="mb-4"> ₹ 8000 per night </h6> 
           <p class="card-text">These are two rooms connected by a locked adjoining door that can be opened by you and your fellow guests during your stay.
           located next to each other, and these rooms have a connecting door. 
@@ -220,7 +227,7 @@
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\d1.jpg" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title mb-3">Dulex Rooms</h5>
+          <h4 class="room-card-title mb-3">Dulex Rooms</h4>
           <h6 class="mb-4"> ₹ 1000 per night </h6> 
           <p class="card-text">Deluxe rooms are usually larger than their standard counterparts, 
               may include a bathtub and a shower in the bathroom.
@@ -247,7 +254,7 @@
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\s4.jpg" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title mb-3">Super Dulex Rooms</h5>
+          <h4 class="room-card-title mb-3">Super Dulex Rooms</h4>
           <h6 class="mb-4"> ₹ 2000 per night </h6> 
           <p class="card-text">Super deluxe room is spacious provided with sofa's, 
                 bath room fitted with bath tubs.
@@ -274,7 +281,7 @@
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\l1.jpg" class="card-img-top ">
         <div class="card-body">
-          <h5 class="card-title mb-3">Luxury Rooms</h5>
+          <h4 class="room-card-title mb-3">Luxury Rooms</h4>
           <h6 class="mb-4"> ₹ 10000 per night </h6> 
           <p class="card-text">Luxury Rooms are typically smaller, and have a clear creative sense and emphasis on design compared to traditional hotels.Beautiful views in every direction – inside and out.</p>
           <div class="mb-4">
@@ -299,7 +306,7 @@
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\su2.jpg" class="card-img-top ">
         <div class="card-body">
-          <h5 class="card-title mb-3">Suits</h5>
+          <h4 class="room-card-title mb-3">Suits</h4>
           <h6 class="mb-4"> ₹ 15000 per night </h6> 
           <p class="card-text">It usually refers to rooms together, like when you get a suite at a fancy hotel.
               Suites class of accommodations with more space than a typical hotel room,but there should be more than one room to constitute a true suite.</p>

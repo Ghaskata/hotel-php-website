@@ -2,7 +2,6 @@
     require('inc/func.php');
     require('inc/db_conn.php');
     adminLogin();
-    session_regenerate_id(true);
 ?>
 <!DOCTYPE html>
 <html lang="en">

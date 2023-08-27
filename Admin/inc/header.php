@@ -13,7 +13,7 @@
             </button>
             <div class="collapse navbar-collapse flex-column align-items-stretch mt-3" id="adminMenuDropdown">
                 <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a href="dashboard.php" class="nav-link text-white">Dashboard</a>
                     </li>
                     <li class="nav-item">
@@ -23,7 +23,7 @@
                         <a href="features_facilities.php" class="nav-link text-white">Feactures & Facilities</a>
                     </li>
                     <li class="nav-item">
-                        <a href="users.php" class="nav-link text-white">Users</a>
+                        <a href="users_query.php" class="nav-link text-white">Users Queries</a>
                     </li>
                     <li class="nav-item">
                         <a href="settings.php" class="nav-link text-white">Settings</a>
@@ -33,3 +33,4 @@
         </div>
     </nav>
 </div>
+
