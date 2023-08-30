@@ -86,7 +86,7 @@
         <div class="col-lg-6 col-12 bg-white shadow">
             <div class="container w-75 pt-5 py-3">
                 <h2 class="h-font text-center fs-1">Reach Out To Us</h2>
-                <form method="POST">
+                <form method="POST" id="contact_form">
                     <div class="form-group mt-5">
                         <label class="fs-5" for="name">Full Name</label>
                         <input type="text" id="name" name="name" class="input form-control shadow-none" required>
@@ -101,35 +101,32 @@
                     </div>
                     <div class="form-group mt-4 mb-5">
                         <label class="fs-5" for="msg">Message</label>  
-                        <input type="text" id="msg" name="msg" class="input form-control shadow-none" required>
+                        <textarea id="msg" name="msg" rows="2" class="input form-control shadow-none" required></textarea>
                     </div>
-                    <button type="submit" name="send" class="btn btn-primary px-4 py-2 fs-5 mt-4 rounded-pill">Send Message</button>
+                    <button type="submit" name="send" value="send" class="btn btn-primary px-4 py-2 fs-5 mt-4 rounded-pill">Send Message</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<?php
-if (isset($_POST['send'])) {
-    $name=addslashes($_POST['name']);
-    $email=addslashes($_POST['email']);
-    $subject=addslashes($_POST['subject']);
-    $msg=addslashes($_POST['msg']);
-
-
-    $sql="INSERT INTO `user_query`(`name`, `email`, `subject`, `message`) VALUES ('$name','$email','$subject','$msg')";
-    $res=mysqli_query($con,$sql);
-    if ($res) {
-        // alert("success","Your Message has been Send Succesfully");
-        timerAlert('success','Your Message Has Been send Succesfully',1500);
-    }
-    else{
-        simpleAlert('ERROR!',"Someting Went's Wrong","error");
-    }
-}   
-?>
-
+<script>
+    $("#contact_form").submit(function(e){
+        console.log($('#contact_form').serialize());
+        $.ajax({
+            url:"Admin/ajax/curd.php",
+            method:'post',
+            data:$('#contact_form').serialize(),
+            success:function(data){
+                <?php timerAlertForScript('success','Your Message Has Been send Succesfully',2000);?>
+            },
+            error:function(){
+                <?php simpleAlertForScript('ERROR!',"Someting Wents Wrong","error");?>
+            }
+        });
+        e.preventDefault();
+    })
+</script>
 
 <!-- footer -->
 <?php
@@ -138,6 +135,6 @@ if (isset($_POST['send'])) {
 <!-- footer end -->
 
 
-    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

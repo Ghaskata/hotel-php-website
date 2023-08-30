@@ -30,6 +30,17 @@ function simpleAlert($title,$text,$icon){
 simple;
 }
 
+function simpleAlertForScript($title,$text,$icon){
+  echo<<<simple
+  Swal.fire({
+      title: '$title',
+      text: '$text',
+      icon: '$icon',
+      confirmButtonText: 'Ok'
+    });
+simple;
+}
+
 function timerAlert($icon,$title,$timer){
     echo<<<time
     <script>
@@ -41,6 +52,17 @@ function timerAlert($icon,$title,$timer){
         timer: $timer
       });
     </script>
+time;
+}
+function timerAlertForScript($icon,$title,$timer){
+  echo<<<time
+  Swal.fire({
+      position: 'top-end',
+      icon: '$icon',
+      title: '$title' ,
+      showConfirmButton: false,
+      timer: $timer
+    });
 time;
 }
 
@@ -67,6 +89,7 @@ function con_canAlert(){
     </script>
 confirm_cancle;
 }
+
 
 function deleteAlert(){
     echo<<<time

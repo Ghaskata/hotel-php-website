@@ -20,7 +20,10 @@
                         <a href="rooms.php" class="nav-link text-white">Rooms</a>
                     </li>
                     <li class="nav-item">
-                        <a href="features_facilities.php" class="nav-link text-white">Feactures & Facilities</a>
+                        <a href="features.php" class="nav-link text-white">Feactures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="facilities.php" class="nav-link text-white">Facilities</a>
                     </li>
                     <li class="nav-item">
                         <a href="users_query.php" class="nav-link text-white">Users Queries</a>
