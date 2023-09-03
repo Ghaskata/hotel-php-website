@@ -20,26 +20,52 @@
 ?>
 <!-- navbar end -->
 <!-- slider -->
+<!-- SELECT * FROM `home_silder` -->
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images\2.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
+      <?php
+        $sql="SELECT * FROM `home_silder`";
+        $res=mysqli_query($con,$sql);
+        $result='';
+        if (mysqli_num_rows($res)>0) {
+          $i=1;
+          while ($row=mysqli_fetch_assoc($res)) {
+            if ($i==1) {
+              $result.='
+              <div class="carousel-item active" data-bs-interval="1000" style="width: 100%;height: 100vh;">
+                <img src="images/carousel/'.$row['image'].'" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
+              </div>';
+              $i++;
+            }
+            else{
+              $result.='
+              <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
+                <img src="images/carousel/'.$row['image'].'" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
+              </div>';
+              $i++;
+            }
+          }
+          echo $result;
+        }
+      ?>
+      <!-- <div class="carousel-item active" data-bs-interval="1000" style="width: 100%;height: 100vh;">
+        <img src="images/carousel/2.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
       </div>
       <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images\3.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
+        <img src="images/carousel/3.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
       </div>
       <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images\4.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
+        <img src="images/carousel/4.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
       </div>
       <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images\5.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
+        <img src="images/carousel/5.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
       </div>
       <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
         <img src="images/carousel/5.png" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
       </div>
       <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
         <img src="images/carousel/6.png" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
-      </div>
+      </div> -->
     </div>
     <div class="carousel-caption d-none d-md-block"style="top:5%;">
       <h2 class="mt-4 mb-5 text-light" style="font-family:cursive;">Life Is A Beautiful Journey , Live It Well</h2>

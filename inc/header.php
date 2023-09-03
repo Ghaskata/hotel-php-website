@@ -43,7 +43,7 @@ require('Admin/inc/func.php');
 
 <!-- login  Modal -->
 <div class="modal fade" id="LoginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <form method="POST">
+  <form method="POST" id="LoginForm">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -53,11 +53,11 @@ require('Admin/inc/func.php');
       <div class="modal-body">
         <div class="mb-3">
           <label class="form-label"> username </label>
-          <input type="text" class="form-control shadow-none">
+          <input type="text" class="form-control shadow-none" name="LoginName" required>
         </div>
         <div class="mb-3">
           <label class="form-label">password</label>
-          <input type="password" class="form-control shadow-none">
+          <input type="password" class="form-control shadow-none" name="LoginPass" required>
         </div>
         <div class="mb-3 d-flex align-items-center justify-content-between" >
           <button type="submit" class="btn btn-outline-success shadow-none me-3"> LOGIN </button>
@@ -91,7 +91,7 @@ require('Admin/inc/func.php');
             <div class="col-md-6 ps-0 mb-3">
               <div class="mb-3">
                 <label class="form-label"> Name </label>
-                <input name="name" type="text" class="form-control shadow-none" required>
+                <input name="name" type="text" class="form-control shadow-none" pattern="[A-Za-z].{3,}" required>
               </div>
             </div>
             <div class="col-md-6 ps-0 mb-3">
@@ -100,12 +100,12 @@ require('Admin/inc/func.php');
                 <input name="uname" type="text" class="form-control shadow-none" required>
               </div>
             </div>
-          </div>
-          <div class="row">
+          
+          
             <div class="col-md-6 ps-0 mb-3">
               <div class="mb-3">
                 <label class="form-label"> Phone </label>
-                <input name="phone" type="number" class="form-control shadow-none" required>
+                <input name="phone" type="text" class="form-control shadow-none" pattern="[1-9]{1}[0-9]{9}" required>
               </div>
             </div>         
             <div class="col-md-6 p-0 mb-3">
@@ -114,36 +114,21 @@ require('Admin/inc/func.php');
                 <input name="email" type="Email" class="form-control shadow-none" required>
               </div>
             </div>
-          </div>  
-          <div class="row">  
+            
+            
             <div class=" col-md-12 ps-0 mb-3">
               <label class="form-label"> Address </label>
               <div class="form-floating ">
                 <textarea name="address" class="form-control shadow-none" placeholder="Leave a comment here" rows="1" required></textarea>
               </div>
             </div>
-          </div>
-          <div class="row">
-
-            <div class="col-md-6 ps-0 mb-3">
-              <div class="mb-3">
-                <label class="form-label"> Date Of Birth </label>
-                <input name="dob" type="date" class="form-control shadow-none" required>
-              </div>
-            </div>
-            <div class="col-md-6 p-0 mb-3">
-              <div class="mb-3">
-                <label class="form-label"> Pincode </label>
-                <input name="pincode" type="number" class="form-control shadow-none" required>
-              </div>
-            </div>
-          </div>
-          <div class="row">
+          
+         
 
             <div class="col-md-6 ps-0 mb-3">
               <div class="mb-3">
                 <label class="form-label"> Create Password </label>
-                <input name="pass" type="password" class="form-control shadow-none">
+                <input name="pass" type="password" class="form-control shadow-none" pattern=".{4,}" required>
               </div>
             </div>
             <div class="col-md-6 p-0 mb-3">
@@ -152,7 +137,7 @@ require('Admin/inc/func.php');
                 <input name="cpass" type="password" class="form-control shadow-none" required>
               </div>
             </div>
-          </div>
+          
           
         </div>
         <div class="text-center">
@@ -166,3 +151,57 @@ require('Admin/inc/func.php');
 </div>
 
 
+
+<script>
+  $(document).ready(function(){
+    //register 
+    $("#register-form").submit(function(e){
+      e.preventDefault();
+      $.ajax({
+        url:'./Admin/ajax/registation-login-curd.php',
+        method:'POST',
+        data:$('#register-form').serialize(),
+        success:function(data){
+          if(data=='password not match'){
+              <?php simpleAlertForScript('Warning!',"Password And Confirm Password should be same","warning");?>
+          }
+          else if(data=="User Is Alredy Exist"){
+              <?php simpleAlertForScript('Error!',"UserName is Alrady Exist","error");?>
+          }
+          else if(data=="user created"){
+              <?php simpleAlertForScript('Success!',"User Ceated Successfully","success");?>
+          }
+          else{
+            console.log(data);
+            alert(data);
+          }
+        },
+        error:function(){
+          <?php simpleAlertForScript('ERROR!',"Something Wents Wrong","error");?>
+        }
+      })
+    })
+
+
+
+    //login
+    $("#LoginForm").submit(function(e){
+      e.preventDefault();
+      $.ajax({
+        url:'./Admin/ajax/registation-login-curd.php',
+        method:'POST',
+        data:$('#LoginForm').serialize(),
+        success:function(data){
+          if(data=="found"){
+            <?php simpleAlertForScript('success',"login in","success");?>
+          }else{
+            <?php simpleAlertForScript("User Not exist !","user not found create a new account.","error");?>
+          }
+        },
+        error:function(){
+          <?php simpleAlertForScript('ERROR!',"Something Wents Wrong","error");?>
+        }
+      })
+    })
+  })
+</script>

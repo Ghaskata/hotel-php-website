@@ -18,7 +18,7 @@ if (isset($_GET['del'])) {
         $sql="DELETE FROM `features` WHERE `id`=".$_GET['del'];
         if(mysqli_query($con,$sql))
         {
-            simpleAlert('Success!',"Feature Deleted Succesfully!!!","success");
+            timerAlert("success","Feature Deleted Succesfully!!!",1500,'center');
         }
         else{
             simpleAlert('ERROR!',"Opration Failed","error");
@@ -113,12 +113,12 @@ datarow;
     <script>
         $('#featuresModel_form').submit((e)=>{
             $.ajax({
-                url:'ajax/curd.php',
+                url:'ajax/feature-facility-curd.php',
                 type:'POST',
                 data:$('#featuresModel_form').serialize(),
                 success:function(data){
                     if(data){
-                        <?php timerAlertForScript("success","New Feature Added Succesfully",2000); ?>
+                        <?php timerAlertForScript("success","New Feature Added Succesfully",2000,"center"); ?>
                         setInterval(() => {
                             location.reload(true);
                         }, 2000);
@@ -137,7 +137,7 @@ datarow;
     <script>
         $('.btndelete').click(function(e){
             var url = e.currentTarget.getAttribute('href')
-            console.log(url);
+            // console.log(url);
             e.preventDefault();
             Swal.fire({
                 title: 'Are you sure ?',

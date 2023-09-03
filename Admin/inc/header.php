@@ -4,7 +4,7 @@
 </div>
 
 
-<div class="col-lg-2 bg-dark border-top border-3 border-secondary" id="dashboard-menu">
+<div class="col-lg-2 bg-dark border-top border-3 border-secondary" id="dashboard-menu" style="z-index: 1;">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid flex-lg-column align-items-stretch">
             <h4 class="mt-3 text-light">ADMIN PANEL</h4>
@@ -27,9 +27,6 @@
                     </li>
                     <li class="nav-item">
                         <a href="users_query.php" class="nav-link text-white">Users Queries</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="settings.php" class="nav-link text-white">Settings</a>
                     </li>
                 </ul>
             </div>

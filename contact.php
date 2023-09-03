@@ -52,7 +52,7 @@
 <div class="container-fluid px-5 mx-auto">
     <div class="row m-auto">
         <div class="col-lg-4 col-12 mb-4 m-auto">
-            <div class="m-1 shadow px-3 py-2 rounded border-top border-4 border-secondary contact-card">
+            <div class="m-1 shadow px-3 py-2 rounded border-top border-4 border-secondary contact-card animate__animated animate__zoomIn">
                 <h3 class="my-3">Surat Branch</h3>
                 <h5>Phone No : <span class="fs-6 fw-light">9978564534</span> </h5>
                 <h5>Email : <span class="fs-6 fw-light">suratTAJhotel@gmail.com</span> </h5>
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-12 mb-4 m-auto">
-            <div class="m-1 shadow px-3 py-2 rounded border-top border-4 border-secondary contact-card">
+            <div class="m-1 shadow px-3 py-2 rounded border-top border-4 border-secondary contact-card animate__animated animate__zoomIn">
                 <h3 class="my-3">Mumbai Branch</h3>
                 <h5>Phone No : <span class="fs-6 fw-light">9978564534</span> </h5>
                 <h5>Email : <span class="fs-6 fw-light">suratTAJhotel@gmail.com</span> </h5>
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-12 mb-4 m-auto">
-            <div class="m-1 shadow px-3 py-2 rounded border-top border-4 border-secondary contact-card">
+            <div class="m-1 shadow px-3 py-2 rounded border-top border-4 border-secondary contact-card animate__animated animate__zoomIn">
                 <h3 class="my-3">London Branch</h3>
                 <h5>Phone No : <span class="fs-6 fw-light">9978564534</span> </h5>
                 <h5>Email : <span class="fs-6 fw-light">suratTAJhotel@gmail.com</span> </h5>
@@ -80,10 +80,10 @@
 
 <div>
     <div class="row my-4 mx-4">
-        <div class="col-lg-6 col-12 bg-light p-0">
+        <div class="col-lg-6 col-12 bg-light p-0 animate__animated animate__zoomIn animate__delay-2s">
             <img src="images\food-1.jpg" alt="" width="100%" id="contact-img">
         </div>
-        <div class="col-lg-6 col-12 bg-white shadow">
+        <div class="col-lg-6 col-12 bg-white shadow animate__animated animate__flipInX animate__delay-2s">
             <div class="container w-75 pt-5 py-3">
                 <h2 class="h-font text-center fs-1">Reach Out To Us</h2>
                 <form method="POST" id="contact_form">
@@ -114,11 +114,11 @@
     $("#contact_form").submit(function(e){
         console.log($('#contact_form').serialize());
         $.ajax({
-            url:"Admin/ajax/curd.php",
+            url:"Admin/ajax/contactCurd.php",
             method:'post',
             data:$('#contact_form').serialize(),
             success:function(data){
-                <?php timerAlertForScript('success','Your Message Has Been send Succesfully',2000);?>
+                <?php timerAlertForScript('success','Your Message Has Been send Succesfully',2000,"top-end");?>
             },
             error:function(){
                 <?php simpleAlertForScript('ERROR!',"Someting Wents Wrong","error");?>

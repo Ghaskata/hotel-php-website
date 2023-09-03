@@ -16,14 +16,26 @@
 <?php
 if (isset($_GET['del'])) {
         $sql="DELETE FROM `facilities` WHERE `id`=".$_GET['del'];
+        $q="SELECT * FROM `facilities` WHERE `id`=".$_GET['del'];
+        $res=mysqli_query($con,$q);
+        if ($res->num_rows==1) {
+            $row=mysqli_fetch_assoc($res);
+            $img_url="../images/facilities/".$row['icon'];
+            if (file_exists($img_url)) {
+                unlink($img_url);
+            }else{
+                // echo "file not exists";
+            }
+        }
         if(mysqli_query($con,$sql))
         {
-            simpleAlert('Success!',"Facility Deleted Succesfully!!!","success");
+            timerAlert("success","Facility Deleted Succesfully!!!",1500,"center");
         }
         else{
             simpleAlert('ERROR!',"Opration Failed","error");
         }
  }
+
 ?>
 
     <?php require('inc/header.php'); ?>
@@ -72,34 +84,35 @@ if (isset($_GET['del'])) {
                                 <th scope="col">No</th>
                                 <th scope="col">Icon</th>
                                 <th scope="col">Facility Name</th>
-                                <th scope="col">Description</th>
+                                <th scope="col" width="40%">Description</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                                $sql="SELECT * FROM `facilities`";
-                                $res=mysqli_query($con,$sql);
-                                if($res->num_rows>0){
-                                    $i=1;
-                                    while ($row=mysqli_fetch_assoc($res)) {
-                                        $delete="<a href='?del=$row[id]' class='btn btn-sm btndelete btn-danger'><i class='fa fa-trash me-2'></i>Delete</a>";
-                                        echo<<<datarow
-                                            <tr>
-                                                <td>$i</td>
-                                                <td><img src="../images/facilities/$row[icon]"></td>
-                                                <td>$row[name]</td>
-                                                <td>$row[description]</td>
-                                                <td>$delete</td>
-                                            </tr>
+                        <tbody id="tbody">
+                        <?php
+                            $sql="SELECT * FROM `facilities`";
+                            $res=mysqli_query($con,$sql);
+                            if($res->num_rows>0){
+                                $i=1;
+                                while ($row=mysqli_fetch_assoc($res)) {
+                                    $delete="<a href='?del=$row[id]' class='btn btn-sm btndelete btn-danger'><i class='fa fa-trash me-2'></i>Delete</a>";
+                                    echo<<<datarow
+                                        <tr>
+                                            <td>$i</td>
+                                            <td><img src="../images/facilities/$row[icon]" height="70px"></td>
+                                            <td>$row[name]</td>
+                                            <td >$row[description]</td>
+                                            <td>$delete</td>
+                                        </tr>
 datarow;
-                                        $i++;
-                                    }
+                                    $i++;
                                 }
-                                else{
-                                    //no record found
-                                }
-                            ?>
+                            }
+                            else{
+                                //no record found
+                                echo "Any Facility Not Founds";
+                            }
+                        ?>
                         </tbody>
                     </table>
                 </div>                
@@ -112,20 +125,18 @@ datarow;
             $('#faciModel_form').submit(function(e){
             e.preventDefault();
             $.ajax({
-                url:'ajax/curd.php',
+                url:'ajax/feature-facility-curd.php',
                 type:'POST',
                 data:new FormData(this),
                 contentType:false,
                 processData:false,
                 success:function(data){
                     if(data){
-                        console.log(data);
-                        <?php timerAlertForScript("success","New Facility Added Succesfully",2000); ?>
+                        <?php timerAlertForScript("success","New Facility Added Succesfully",2000,'center'); ?>
                         setInterval(() => {
                             location.reload(true);
                         }, 2000);
                     }else{
-                        console.log(data);
                         <?php simpleAlertForScript('ERROR!',"Opration Failed","error");?>
                     }
                 },
@@ -139,6 +150,7 @@ datarow;
     </script>
     <script>
         $('.btndelete').click(function(e){
+            e.preventDefault();
             var url = e.currentTarget.getAttribute('href')
             console.log(url);
             e.preventDefault();
@@ -160,6 +172,8 @@ datarow;
             });
         })
     </script>
+
+    
     <script src="../css/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -30,3 +30,87 @@
         margin-top: 60px;
     }
 }
+
+
+/* dashboad home silder add images */
+.home_slider:hover{
+    filter:brightness(60%);
+    transition: all ease 0.5s;
+}
+.home_slider{
+    position: relative;
+    border-radius: 20px;
+    padding:0 10px;
+    cursor: pointer;
+}
+.home_slider>img,.home_slider>div{
+    border-radius: 20px;
+    height: 100%;;
+    width: 100%;
+    object-fit: cover;
+}
+.home_slider .fa-trash{
+    position: absolute;
+    text-decoration: none;
+    top: 5%;
+    right: 10%;
+    font-size: 1.3rem;
+    color: red;
+}  
+.home_slider .add_home_slider_img{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* room type slider */
+.room_type_slider:hover{
+    filter:brightness(60%);
+    transition: all ease 0.5s;
+}
+.room_type_slider{
+    position: relative;
+    border-radius: 20px;
+    padding:0 10px;
+    cursor: pointer;
+}
+.room_type_slider>img,.room_type_slider>div{
+    border-radius: 20px;
+    height: 100%;;
+    width: 100%;
+    object-fit: cover;
+}
+.room_type_slider .fa-trash{
+    position: absolute;
+    text-decoration: none;
+    top: 5%;
+    right: 10%;
+    font-size: 1.3rem;
+    color: red;
+}  
+.room_type_slider .roomType{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 1.3rem;
+    color: rgb(4, 4, 58);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s;
+    opacity: 0;
+}  
+.room_type_slider .roomType:hover{
+    opacity:1;
+}  
+.room_type_slider .add_room_type{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}

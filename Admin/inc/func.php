@@ -41,11 +41,11 @@ function simpleAlertForScript($title,$text,$icon){
 simple;
 }
 
-function timerAlert($icon,$title,$timer){
+function timerAlert($icon,$title,$timer,$position){
     echo<<<time
     <script>
     Swal.fire({
-        position: 'top-end',
+        position: '$position',
         icon: '$icon',
         title: '$title' ,
         showConfirmButton: false,
@@ -54,10 +54,10 @@ function timerAlert($icon,$title,$timer){
     </script>
 time;
 }
-function timerAlertForScript($icon,$title,$timer){
+function timerAlertForScript($icon,$title,$timer,$position){
   echo<<<time
   Swal.fire({
-      position: 'top-end',
+      position: '$position',
       icon: '$icon',
       title: '$title' ,
       showConfirmButton: false,
@@ -106,4 +106,6 @@ function redirect($url) {
         window.location.href='$url';
     </script>";
 }
+
+
 ?>

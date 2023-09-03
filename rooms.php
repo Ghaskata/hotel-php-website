@@ -114,18 +114,18 @@
   </div>
 </div> -->
 <!-- Our rooms end -->
-
+<!-- 
 <div class="container-fluid availability-form mt-4">
   <div class="row px-lg-5">
     <div class="col-lg-12 d-lg-block d-md-block d-none shadow p-4 bg-white rounded">
       <h4 class="fs-3">FILTERS</h4>
       <form>
           <div class="row mt-4 align-items-end pb-3">
-              <div class="col-lg-2">
+              <div class="col-lg-5">
                   <label for="date" class="form-lable mb-2" style="font-size: 500;">By date</label>
                   <input type="date" class="form-control shadow-none" name="date" id="date">
               </div>
-              <div class="col-lg-2">
+              <div class="col-lg-5">
                   <label for="room-type" class="form-lable mb-2" style="font-size: 500;">By Room Type</label>
                   <select class="form-select shadow-none" aria-label="Default select example">
                   <option value="all">All Rooms</option>
@@ -137,26 +137,6 @@
                   <option value="suits">Suits</option>
                 </select>
               </div>
-              <div class="col-lg-2">
-                <label class="form-label">By Guest </label>
-                <select class="form-select shadow-none" aria-label="Default select example">
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                  <option value="4">four</option>
-                  <option value="5">five</option>
-                </select>
-              </div>
-              <div class="col-lg-2">
-                <label class="form-label">By Rooms </label>
-                <select class="form-select shadow-none" aria-label="Default select example">
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                  <option value="4">four</option>
-                  <option value="5">five</option>
-                </select>
-              </div>
               <div class="col-lg-2 mx-auto">
                   <button type="submit" class="btn btn-primary border-0 shadow-none text-white fs-5 px-3 custom-btn">Apply Filters</button>
               </div>
@@ -164,13 +144,13 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <div class="container">
   <div class="row">
         
-    <div class="col-lg-4 col-md-6 mb-5"> 
+    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\r1.jpg" class="card-img-top ">
         <div class="card-body">
@@ -196,7 +176,7 @@
       </div>                        
     </div>
             
-    <div class="col-lg-4 col-md-6 mb-5"> 
+    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\c5.jpg" class="card-img-top ">
         <div class="card-body">
@@ -223,7 +203,7 @@
       </div>
     </div>
 
-    <div class="col-lg-4 col-md-6 mb-5"> 
+    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\d1.jpg" class="card-img-top">
         <div class="card-body">
@@ -250,7 +230,7 @@
         </div>
     </div>
     
-    <div class="col-lg-4 col-md-6 mb-5"> 
+    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\s4.jpg" class="card-img-top">
         <div class="card-body">
@@ -277,7 +257,7 @@
       </div>
     </div>
 
-    <div class="col-lg-4 col-md-6 mb-5"> 
+    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\l1.jpg" class="card-img-top ">
         <div class="card-body">
@@ -302,7 +282,7 @@
       </div>
     </div>
 
-    <div class="col-lg-4 col-md-6 mb-5"> 
+    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
       <div class="card shadow-lg" style="max-width:350px;">
         <img src="images\rooms\su2.jpg" class="card-img-top ">
         <div class="card-body">
@@ -339,6 +319,6 @@
 <!-- footer end -->
 
 
-    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="css/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
