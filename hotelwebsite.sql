@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2023 at 10:49 PM
+-- Generation Time: Sep 13, 2023 at 07:29 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -63,15 +63,18 @@ CREATE TABLE `facilities` (
 --
 
 INSERT INTO `facilities` (`id`, `icon`, `name`, `description`) VALUES
-(15, '26727.svg', 'face', 'face'),
-(21, '31320.svg', 'hvjhn', 'kn'),
-(22, '12908.svg', 'WiFi', 'Our Hotel offers free Internet access. High-speed wireless Internet connection is complimentary both in the rooms and public areas.'),
-(23, '4149.svg', 'Parking', 'Our Hotel offers 24-hour indoor parking for its guests. The hotel is directly accessible from the indoor car park . Also Provide wide parking facility with CCTV camera for security.'),
+(22, '12908.svg', 'WiFi', 'Our Hotel offers free Internet access For Our Customer. High-speed wireless Internet connection is complimentary both in the rooms and public areas.'),
+(23, '4149.svg', 'Parking', 'Our Hotel offers 24-hour indoor parking for its guests. The hotel is directly accessible from the indoor car park With High Quality CCTV camera for security.'),
 (24, '914.svg', 'TV', 'We Provides TV services are more than just a way to provide entertainment options for hotel guests. Cable TV providers for hotels typically offer solutions .'),
 (25, '13462.svg', 'Air-Conditioner', 'Air-conditioner is one of the necessary in our daily lives for regulating temperature. It creates a cool area during the hot summer and a warm area during the winter'),
 (26, '28544.svg', 'Medical', 'We provide this this service, typically have a wide range of units to save lives that can give emergencies dealing with non-intensive care and intensive care'),
 (27, '15562.svg', 'Room Service', 'Our Hotel provides 24-hour room service.Any time customer can call in reception area for any service . Please click here for Room Service menu.'),
-(29, '25115.svg', 'Fire Safty', 'Our Hotel provides Fire Safety Service . For customer Protection And sefety We provide fire safety services For fire related problems.');
+(29, '25115.svg', 'Fire Safty', 'Our Hotel provides Fire Safety Service . For customer Protection And sefety We provide fire safety services For fire related problems.'),
+(30, '24318.svg', 'Room Heater', 'Electric room heaters are provided with a curved, polished surface behind the rod-like heating element. This polished surface reflects back all the heat radiation falling on it.'),
+(31, '13391.svg', 'Swimming Pool', 'A hotel in a warm location is more likely to offer a swimming pool for guests to use, but even hotels in colder climates can benefit from offering swimming facilities.  '),
+(32, '1631.svg', 'Spa ', 'Guests can take advantage of spa at the hotel spa. Facials are very popular. We also provide in-room treatments, where a technician a massage, manicure, etc.'),
+(33, '27434.svg', 'Wet Bar', 'A wet bar is a small area in a hotel room that is equipped with a sink, a refrigerator, and a selection of alcoholic beverages and mixers full of joy.'),
+(34, '5812.svg', 'Sound System', 'Our hotel sound system combines 32 stylish 3\" ceiling speakers with a powerful 350 watt Bluetooth mixer amplifier. Provide your guests with the ideal lodging .');
 
 -- --------------------------------------------------------
 
@@ -90,7 +93,12 @@ CREATE TABLE `features` (
 
 INSERT INTO `features` (`id`, `name`) VALUES
 (1, 'WiFi'),
-(2, 'AC');
+(2, 'AC'),
+(3, 'BedRoom'),
+(4, 'Balcony'),
+(5, 'Kitchen'),
+(6, 'Terrace Balcony'),
+(7, 'BathRoom');
 
 -- --------------------------------------------------------
 
@@ -124,21 +132,19 @@ INSERT INTO `home_silder` (`id`, `image`) VALUES
 CREATE TABLE `room_type` (
   `id` int(11) NOT NULL,
   `type` varchar(100) NOT NULL,
-  `image` varchar(100) NOT NULL,
-  `desc` varchar(500) NOT NULL
+  `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `room_type`
 --
 
-INSERT INTO `room_type` (`id`, `type`, `image`, `desc`) VALUES
-(3, 'rty', '20959.jpg', 'fbsnmz,vsdfgcvhbnmcxdffcvbnm,'),
-(4, 'Standard', '3852.jpg', 'Perfect for the single person and for couple.A standard room can accommodate up to two guests. The room may also have a small sitting area, such as a sofa or an armchair.'),
-(5, 'Dulex', '32300.jpg', 'Deluxe rooms are usually larger than their standard counterparts, may include a bathtub and a shower in the bathroom. Deluxe Plus rooms offer extra floor space along with exceptional design features.'),
-(6, 'Luxury', '20725.jpg', 'Luxury Rooms are typically smaller, and have a clear creative sense and emphasis on design compared to traditional hotels.Beautiful views in every direction â€“ inside and out.'),
-(7, 'Suits', '20106.jpg', 'It usually refers to rooms together, like when you get a suite at a fancy hotel. Suites class of accommodations with more space than a typical hotel room,but there should be more than one room to constitute a true suite.'),
-(8, 'Connect Room', '11515.jpg', 'These are two rooms connected by a locked adjoining door that can be opened by you and your fellow guests during your stay. located next to each other, and these rooms have a connecting door.');
+INSERT INTO `room_type` (`id`, `type`, `image`) VALUES
+(4, 'Standard', '3852.jpg'),
+(5, 'Dulex', '32300.jpg'),
+(6, 'Luxury', '20725.jpg'),
+(7, 'Suits', '20106.jpg'),
+(8, 'Connect Room', '11515.jpg');
 
 -- --------------------------------------------------------
 
@@ -169,7 +175,11 @@ INSERT INTO `usertbl` (`id`, `name`, `uname`, `phone`, `email`, `address`, `pass
 (4, 'sita', 'site', 7890567898, '7890567898', 'dyfhtygj', '3456', 1, '2023-09-01 23:17:23'),
 (5, 'arch', 'asu', 7890567898, '7890567898', 'A / 153 , shivsagar soc. , surat  ', '45d282e7fed55b485182393f7bc6292d', 1, '2023-09-01 23:19:59'),
 (6, 'gita1', 'gira1', 7890567898, '7890567898', '104 /radhe soc. ,surat', '35e31e606021b85485cea95f4ce21f7d', 1, '2023-09-01 23:32:44'),
-(7, 'babita', 'babita@$%!123', 7890567898, '7890567898', '103/gokuldham soc. , guaregav , mumbai ', '20fe687d58d6295cd94ba4f4ffe4bab4', 1, '2023-09-02 00:36:54');
+(7, 'babita', 'babita@$%!123', 7890567898, '7890567898', '103/gokuldham soc. , guaregav , mumbai ', '20fe687d58d6295cd94ba4f4ffe4bab4', 1, '2023-09-02 00:36:54'),
+(8, 'admin12', 'admin12', 1234567893, 'admin12@gmail.com', 'admin panel', 'admin12', 1, '2023-09-04 23:41:17'),
+(9, 'emma', 'emma', 7890567898, '7890567898', 'b/123 gita soc,surat', '00a809937eddc44521da9521269e75c6', 1, '2023-09-12 23:41:49'),
+(10, 'sita', 'sita', 7890567898, 'sita@gmail.com', 'sitanagar surat', '803205ab3f1b9b6fa6990393f5ac6b58', 1, '2023-09-13 19:48:32'),
+(11, 'zili', 'zili', 7890567898, 'zili@gmail.com', 'zili housing road , surat', '98337a88a988f20dcd4e2dc0ad53e508', 1, '2023-09-13 19:49:54');
 
 -- --------------------------------------------------------
 
@@ -284,13 +294,13 @@ ALTER TABLE `admintbl`
 -- AUTO_INCREMENT for table `facilities`
 --
 ALTER TABLE `facilities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `features`
 --
 ALTER TABLE `features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `home_silder`
@@ -308,7 +318,7 @@ ALTER TABLE `room_type`
 -- AUTO_INCREMENT for table `usertbl`
 --
 ALTER TABLE `usertbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_query`
