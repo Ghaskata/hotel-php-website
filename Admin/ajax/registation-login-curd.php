@@ -28,8 +28,12 @@
                         echo "User Is Alredy Exist";
                     }
                     else{
-                        $sql="INSERT INTO `usertbl`(`name`, `uname`, `phone`, `email`, `address`, `password`) VALUES ('$name','$uname','$phone','$phone','$address',md5('$pass'))";
+                        $sql="INSERT INTO `usertbl`(`name`, `uname`, `phone`, `email`, `address`, `password`) VALUES ('$name','$uname','$phone','$email','$address',md5('$pass'))";
                         if($res=mysqli_query($con,$sql)){
+                            $id=mysqli_insert_id($con);
+                            session_start();
+                            $_SESSION['userLogin']=true;
+                            $_SESSION['userId']=$id;
                             echo "user created";
                         }
                     }
@@ -44,6 +48,10 @@
         $sql="SELECT * FROM `usertbl` WHERE `uname`='$uname' AND `password`=md5('$pass');";
         $res=mysqli_query($con,$sql);
         if(mysqli_num_rows($res)==1){
+            session_start();
+            $row=mysqli_fetch_assoc($res);
+            $_SESSION['userLogin']=true;
+            $_SESSION['userId']=$row['id'];
             echo "found";
         }else{
             echo "User Not Found";

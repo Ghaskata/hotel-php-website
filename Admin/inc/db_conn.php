@@ -8,6 +8,18 @@
     if(!$con){
         die("not connected".mysqli_connect_eror());
     }
+    
+    $sql="SELECT * FROM `tbltitles`";
+    if ($res=mysqli_query($con,$sql)) {
+        if ($res->num_rows==1) {
+            $row=mysqli_fetch_assoc($res);
+            $websiteTitle=$row['Title'];
+            $slider_lg_msg=$row['slider_lg_msg'];
+            $slider_md_msg=$row['slider_md_msg'];
+            $slider_sm_msg=$row['slider_sm_msg'];
+        }
+    }
+    
 
 
     function select($sql,$values,$datatypes){

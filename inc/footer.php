@@ -11,7 +11,7 @@
 <div class="container-fluid bg-white mt-5 pt-4 shadow">
     <div class="row pt-3 pb-4 m-auto">
         <div class="col-lg-6 px-4 py-1">
-            <h2 class="h-font fw-bold mb-3 p-0 f-font"> TAJ HOTEL </h2>
+            <h2 class="h-font fw-bold mb-3 p-0 f-font"> <?php echo $websiteTitle; ?> </h2>
             <div class="line bg-dark mb-5 ms-1" style="height:2px;width: 200px;"></div>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque exercitationem eaque adipisci excepturi ea maxime, sapiente, architecto in quis ipsum hic esse facilis! Beatae error necessitatibus a ipsam in asperiores.
@@ -52,6 +52,6 @@
         </div> 
     </div>
     <div class="container-fluid py-2 border-top border-light border-1">
-        <h6 class="bg-dark text-white text-center p-3">Designed and Developed By <span class="text-warning">@ AK Webdev</span></h6>
+        <h6 class="bg-dark text-white text-center p-3">Designed and Developed By <span class="text-warning">@ <?php echo $websiteTitle; ?> Webdev</span></h6>
     </div>
 </div>

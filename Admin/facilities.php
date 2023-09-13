@@ -40,13 +40,13 @@ if (isset($_GET['del'])) {
 
     <?php require('inc/header.php'); ?>
     <div class="col-lg-10 ms-auto p-4" id="dashboard-main-content">
-        <h3 class="mb-4">Facilities</h3>
+        <!-- <h3 class="mb-4">Facilities</h3> -->
         <!-- features card -->
         <div class="border-0 shadow-sm">
             <div class="card-body">
 
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h5 class="card-title m-0">Add New Facilities</h5>
+                    <h2 class="card-title m-0">Facilities</h2>
                     <button class="btn btn-outline-success fs-5 px-4 shadow-none btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#faciModel">
                         <i class="fa fa-plus me-2"></i>Add
                     </button>
@@ -77,15 +77,15 @@ if (isset($_GET['del'])) {
                     </div>
                 </div>
 
-                <div class="table-responsive-md" style="height:50vh;overflow-y: scroll;">
+                <div class="table-responsive-md" style="height:60vh;overflow-y: scroll;">
                     <table class="table table-hover text-center">
                         <thead class="sticky-top">
                             <tr class="bg-dark text-light">
-                                <th scope="col">No</th>
-                                <th scope="col">Icon</th>
-                                <th scope="col">Facility Name</th>
+                                <th scope="col" width="10%">No</th>
+                                <th scope="col" width="10%">Icon</th>
+                                <th scope="col" width="20%">Facility Name</th>
                                 <th scope="col" width="40%">Description</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" width="20%">Action</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">

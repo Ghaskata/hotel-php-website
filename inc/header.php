@@ -1,10 +1,6 @@
-<?php 
-require('Admin/inc/db_conn.php');
-require('Admin/inc/func.php');
-?>
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand ms-4 fw-bold fs-3 h-font" href="index.php">TAJ HOTEL</a>
+    <a class="navbar-brand ms-4 fw-bold fs-3 h-font" href="index.php"><?php echo $websiteTitle; ?></a>
     <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,12 +23,23 @@ require('Admin/inc/func.php');
         </li>
         <div class="d-flex" role="search">
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-success shadow-none me-lg-3 me-2 px-3" data-bs-toggle="modal" data-bs-target="#LoginModal">
-            Login
-          </button>
-          <button type="button" class="btn btn-outline-success shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#RegistreModal">
-            Registre
-          </button>
+          <?php
+            if($login){
+              // echo $_SESSION['userId'];
+              echo '<a class="btn btn-outline-success btnLogout shadow-none me-lg-3 me-2 px-3" href="logout.php">
+                      LogOut
+                    </a>
+                    <i class="fa fa-user-circle fs-1 p-0"></i>';
+            }
+            else{
+              echo '<button type="button" class="btn btn-outline-success shadow-none me-lg-3 me-2 px-3" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                      Login
+                    </button>
+                    <button type="button" class="btn btn-outline-success shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#RegistreModal">
+                      Registre
+                    </button>';
+            }
+          ?>
         </div>
       </ul>
     </div>
@@ -151,7 +158,6 @@ require('Admin/inc/func.php');
 </div>
 
 
-
 <script>
   $(document).ready(function(){
     //register 
@@ -193,7 +199,11 @@ require('Admin/inc/func.php');
         data:$('#LoginForm').serialize(),
         success:function(data){
           if(data=="found"){
-            <?php simpleAlertForScript('success',"login in","success");?>
+            <?php 
+              timerAlertForScript('success','Your login in Succesfully',1500,"top-center");?>
+              setTimeout(() => {
+                location.reload();
+              }, 1500);
           }else{
             <?php simpleAlertForScript("User Not exist !","user not found create a new account.","error");?>
           }
@@ -203,5 +213,6 @@ require('Admin/inc/func.php');
         }
       })
     })
+
   })
 </script>

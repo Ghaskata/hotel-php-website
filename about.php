@@ -1,10 +1,15 @@
+<?php 
+require('Admin/inc/db_conn.php');
+require('Admin/inc/func.php');
+$login=userLogin();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require('inc/links.php'); ?>
-    <title>TJ Hotel - About US</title>
+    <title><?php echo $websiteTitle; ?> - About US</title>
     <style>
         .about-card:hover{
             border-top-color: aqua !important;

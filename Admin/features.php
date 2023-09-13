@@ -28,13 +28,13 @@ if (isset($_GET['del'])) {
 
     <?php require('inc/header.php'); ?>
     <div class="col-lg-10 ms-auto p-4" id="dashboard-main-content">
-        <h3 class="mb-4">Feactures</h3>
+        <!-- <h3 class="mb-4">Feactures</h3> -->
         <!-- features card -->
         <div class="border-0 shadow-sm">
             <div class="card-body">
 
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h5 class="card-title m-0">Add New Featuers</h5>
+                    <h2 class="card-title m-0">Featuers</h2>
                     <button class="btn btn-outline-success fs-5 px-4 shadow-none btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#featuresModel">
                         <i class="fa fa-plus me-2"></i>Add
                     </button>
@@ -73,7 +73,7 @@ if (isset($_GET['del'])) {
                     </form> 
                 </div> -->
 
-                <div class="table-responsive-md" style="height:50vh;overflow-y: scroll;">
+                <div class="table-responsive-md" style="height:0v6h;overflow-y: scroll;">
                     <table class="table table-hover text-center">
                         <thead class="sticky-top">
                             <tr class="bg-dark text-light">

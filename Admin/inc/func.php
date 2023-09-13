@@ -6,6 +6,16 @@ function adminLogin(){
         header("location:index.php");
     }
 }
+function userLogin(){
+  session_start();
+  if(isset($_SESSION['userLogin']) && $_SESSION['userLogin']==true){
+      return true;
+  }else{
+    return false;
+  }
+}
+
+
 
 function alert($type,$msg){
     $bs_class = ($type=="success") ? "alert-success" : "alert-danger" ;

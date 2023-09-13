@@ -44,7 +44,8 @@
         if($res->num_rows==1){
             $row=mysqli_fetch_assoc($res);
             $_SESSION['adminLogin']=true;
-            $_SESSION['adminId']=$row['aid'];("dashboard.php");
+            $_SESSION['adminId']=$row['aid'];
+            // ("dashboard.php");
             header("location:dashboard.php");
         }
         else{

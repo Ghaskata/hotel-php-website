@@ -55,7 +55,7 @@
     top: 5%;
     right: 10%;
     font-size: 1.3rem;
-    color: red;
+    color: red !important;
 }  
 .home_slider .add_home_slider_img{
     font-size: 2rem;
@@ -66,6 +66,7 @@
 }
 
 /* room type slider */
+
 .room_type_slider:hover{
     filter:brightness(60%);
     transition: all ease 0.5s;
@@ -76,9 +77,9 @@
     padding:0 10px;
     cursor: pointer;
 }
-.room_type_slider>img,.room_type_slider>div{
+.room_type_slider>img,.room_type_slider>.add_room_type{
     border-radius: 20px;
-    height: 100%;;
+    height: 100%;
     width: 100%;
     object-fit: cover;
 }
@@ -91,12 +92,14 @@
     color: red;
 }  
 .room_type_slider .roomType{
-    height: 100%;
+    height: 85%;
     width: 100%;
     padding: 0;
     margin: 0;
-    font-size: 1.3rem;
-    color: rgb(4, 4, 58);
+    bottom: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
     position: absolute;
     display: flex;
     justify-content: center;

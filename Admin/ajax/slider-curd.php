@@ -60,7 +60,7 @@ if (isset($_POST['room_type'])&&$_POST['room_type']=="all") {
         while($row=mysqli_fetch_assoc($res)){
             $return.='<div class="room_type_slider col-3 my-3" style="height: 200px;">
                         <a href="?delRoomType='.$row['id'].'" class="remove_room_type"><i class="fa fa-trash"></i></a>
-                        <div class="roomType">'.$row['type'].'</div>
+                        <div class="roomType">'.$row['type'].'</div>    
                         <img src="../images/slider/'.$row['image'].'" alt="...">
                     </div>';
         }
@@ -77,16 +77,15 @@ if (isset($_POST['room_type'])&&$_POST['room_type']=="all") {
     }
 }
 
-if (isset($_POST['room_type'])&&isset($_POST['room_type_desc'])) {
+if (isset($_POST['room_type']) && isset($_FILES['room_type_image']['name'])) {
     $type=$_POST['room_type'];
-    $desc=$_POST['room_type_desc'];
     $image=$_FILES['room_type_image']['name'];
     $ext=pathinfo($image,PATHINFO_EXTENSION);
     $newName=rand().".".$ext;   
     $path=$_SERVER['DOCUMENT_ROOT']."/hotel-php-website/images/slider/".$newName;
 
     if(move_uploaded_file($_FILES['room_type_image']['tmp_name'],$path)){
-        $sql="INSERT INTO `room_type`(`type`, `image`,`desc`) VALUES ('$type','$newName','$desc');";
+        $sql="INSERT INTO `room_type`(`type`, `image`) VALUES ('$type','$newName');";
         if ($res=mysqli_query($con,$sql)) {
             echo 'new slide add';
         }else{

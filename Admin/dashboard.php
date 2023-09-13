@@ -11,9 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require('inc/links.php');?>
     <title>Admin Panel - Dashboard</title>
-    <style>
-        
-    </style>
 </head>
 <body class="bg-light">
     <?php
@@ -66,6 +63,53 @@
     }
     ?>
     <?php require('inc/header.php'); ?>
+
+
+<!-- website title editing section-->
+    <div class="col-lg-10 ms-auto p-4" id="">
+        <div class="border-0 shadow">
+            <div class="card-body pb-3">
+                <div class="card-title">
+                    <h3 class="fs-2">WebSite Title</h3>
+                </div>
+                <hr>
+                <form name="frmtitle" method="post">
+                    <div class="d-flex justify-content-between ms-2 me-5" id="">
+                        <input type="text" name="websiteTitle" class="txttitle form-control fs-2 bg-light border-0 w-75" placeholder="enter Website title" value="<?php echo $websiteTitle; ?>" disabled>
+                        <button class="editTitle btn border-0 bg-light shadow-none"><i class="fa fa-pen-alt text-primary fs-3"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- slider text editing section-->
+    <div class="col-lg-10 ms-auto p-4" id="">
+        <div class="border-0 shadow">
+            <div class="card-body pb-3">
+                <div class="card-title">
+                    <h4 class="fs-3">Slider Caption</h4>
+                </div>
+                <hr>
+                <form name="frmcaption" method="post">
+                    <div class="row d-flex justify-content-between ms-2 me-5" id="">
+                        <div class="col-11">
+                            <p class="fs-5 text-secondary">Top</p> <input type="text" name="slider_md_msg" class="slider_md_msg mt-1 form-control fs-4 bg-light border-0 border-bottom" placeholder="enter Slider Top Caption" value="<?php echo $slider_md_msg; ?>" disabled><br>
+                            <p class="fs-5 text-secondary">Middle</p><input type="text" name="slider_lg_msg" class="slider_lg_msg mt-1 form-control fs-3 bg-light border-0 border-bottom" placeholder="enter Slider Middle Caption" value="<?php echo $slider_lg_msg; ?>" disabled><br>
+                            <p class="fs-5 text-secondary">Bottom</p><input type="text" name="slider_sm_msg" class="slider_sm_msg mt-1 form-control fs-5 bg-light border-0 border-bottom" placeholder="enter Slider Bottom Caption" value="<?php echo $slider_sm_msg; ?>" disabled><br>
+                        </div>
+                        <div class="col-1">
+                            <button class="editCaption btn border-0 bg-light shadow-none"><i class="fa fa-pen-alt text-primary fs-3"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- home page slider image section -->
     <div class="col-lg-10 ms-auto p-4" id="dashboard-main-content">
         <div class="border-0 shadow">
             <div class="card-body pb-3">
@@ -125,10 +169,6 @@
                     <div class="mb-3">
                         <label class="form-label fw-bold">Room Image </label>
                         <input type="file" name="room_type_image" id="room_type_image" class="form-control shadow-none" accept=".jpg,.png,.jpeg,.webp" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Room Description </label>
-                        <textarea name="room_type_desc" id="room_type_desc" rows="3" class="form-control shadow-none" required></textarea>
                     </div>
                     <div class="modal-footer" >
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancle</button>
@@ -202,7 +242,6 @@
                 })
             })
 
-
         })
     </script>
 
@@ -274,6 +313,90 @@
             })
 
 
+        })
+    </script>
+
+
+    <script>
+        //edit title
+        $(document).on('click','.editTitle',function(e){
+            e.preventDefault();
+            if($('.txttitle').attr('disabled')){
+                $('.txttitle').removeAttr('disabled');
+                $('.txttitle').focus()
+            }
+            else{
+                Swal.fire({
+                    title: 'Are you sure ?',
+                    text: "You wan't To Rename Your Website ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Rename It!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // $("form[name=frmtitle]").submit();
+                        $.ajax({
+                            url:'ajax/title-curd.php',
+                            method:'post',
+                            data:$("form[name=frmtitle]").serialize(),
+                            success:function(data){
+                                $('.txttitle').attr('disabled',true)
+                                <?php simpleAlertForScript("success !!","Title Updates Succesfully",'success'); ?>
+                            }
+                        })
+                    }
+                    else{
+                        $('.txttitle').attr('disabled',true)
+                    }
+                });
+            }
+        })   
+    </script>
+
+
+    <script>
+        //edit caption
+        $(document).on('click','.editCaption',function(e){
+            e.preventDefault();
+            if($('.slider_md_msg').attr('disabled') || $('.slider_lg_msg').attr('disabled') || $('.slider_sm_msg').attr('disabled')){
+                $('.slider_md_msg').removeAttr('disabled');
+                $('.slider_lg_msg').removeAttr('disabled');
+                $('.slider_sm_msg').removeAttr('disabled');
+                $('.slider_md_msg').focus()
+            }
+            else{
+                Swal.fire({
+                    title: 'Are you sure ?',
+                    text: "You wan't To Update Caption ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes,update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // $("form[name=frmtitle]").submit();
+                        $.ajax({
+                            url:'ajax/title-curd.php',
+                            method:'post',
+                            data:$("form[name=frmcaption]").serialize(),
+                            success:function(data){
+                                $('.slider_md_msg').attr('disabled',true);
+                                $('.slider_lg_msg').attr('disabled',true);
+                                $('.slider_sm_msg').attr('disabled',true);
+                                <?php simpleAlertForScript("success !!","caption Updates Succesfully",'success'); ?>
+                            }
+                        })
+                    }
+                    else{
+                        $('.slider_md_msg').attr('disabled',true);
+                        $('.slider_lg_msg').attr('disabled',true);
+                        $('.slider_sm_msg').attr('disabled',true);
+                    }
+                });
+            }
         })
     </script>
     <script src="../css/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>

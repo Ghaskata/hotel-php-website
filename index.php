@@ -1,10 +1,15 @@
+<?php 
+require('Admin/inc/db_conn.php');
+require('Admin/inc/func.php');
+$login=userLogin();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require('inc/links.php'); ?>
-    <title>TJ Hotel - HOME</title>
+    <title><?php echo $websiteTitle; ?> - HOME</title>
     <style>
       .carousel-image{
         filter: brightness(40%);
@@ -48,29 +53,11 @@
           echo $result;
         }
       ?>
-      <!-- <div class="carousel-item active" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images/carousel/2.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
-      </div>
-      <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images/carousel/3.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
-      </div>
-      <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images/carousel/4.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
-      </div>
-      <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images/carousel/5.jpg" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
-      </div>
-      <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images/carousel/5.png" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
-      </div>
-      <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
-        <img src="images/carousel/6.png" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
-      </div> -->
     </div>
     <div class="carousel-caption d-none d-md-block"style="top:5%;">
-      <h2 class="mt-4 mb-5 text-light" style="font-family:cursive;">Life Is A Beautiful Journey , Live It Well</h2>
-      <h5 class="text-white pt-4" style="font-size: 90px;font-family:'Times New Roman', Times, serif;">Amazing Services , Location & Facilities</h5>
-      <p class="m-3 pb-1 text-white">Best Place To Stay</p>
+      <h2 class="mt-4 mb-5 text-light" style="font-family:cursive;"><?php echo $slider_md_msg?></h2>
+      <h5 class="text-white pt-4" style="font-size: 90px;font-family:'Times New Roman', Times, serif;"><?php echo $slider_lg_msg?></h5>
+      <p class="m-3 pb-1 text-white"><?php echo $slider_sm_msg?></p>
     </div>
   </div>
 <!-- slider -->
@@ -130,37 +117,27 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-4 mb-4">
-      <a href="rooms.php">
-        <div class="card text-white rooms-card" style="max-width :350px;">
-          <img class="card-img" src="images\rooms\r2.jpg" alt="Card image">
-          <div class="card-img-overlay">
-            <h5 class="card-title"> Standard </h5>
-          </div> 
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-4 mb-4">
-      <a href="rooms.php">
-        <div class="card text-white rooms-card" style="max-width :350px;">
-          <img class="card-img" src="images\rooms\d2.jpg" alt="Card image">
-          <div class="card-img-overlay">
-            <h5 class="card-title"> Dulex </h5>
-          </div> 
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-4 mb-4">
-      <a href="rooms.php">
-        <div class="card text-white rooms-card" style="max-width :350px;">
-          <img class="card-img" src="images/rooms/l3.jpg" alt="Card image">
-          <div class="card-img-overlay">
-            <h5 class="card-title mr-3"> Luxury </h5>
-          </div> 
-        </div>
-      </a>
-    </div>
-  </div>
+    <?php 
+      $result='';
+      $sql="SELECT * FROM `room_type`";
+      $res=mysqli_query($con,$sql);
+        if($res->num_rows>0){
+          while($row=mysqli_fetch_assoc($res)){
+            $result.='<div class="col-lg-4 mb-4">
+                        <a href="rooms.php">
+                          <div class="card text-white rooms-card" style="max-width :350px;">
+                            <img class="card-img" src="images/slider/'.$row['image'].'" alt="'.$row['type'].'">
+                            <div class="card-img-overlay">
+                              <h5 class="card-title"> '.$row['type'].' </h5>
+                            </div> 
+                          </div>
+                        </a>
+                      </div>';
+          }
+          echo $result;
+        }
+    ?>
+    
   <div class="col-lg-12 text-center mt-5">
     <a href="rooms.php" class="btn btn-lg btn-outline-dark rounded-0 a-btn d-grid gap-2 col-3 mx-auto mb-5 mt-5"> More Rooms >>> </a>
   </div>
