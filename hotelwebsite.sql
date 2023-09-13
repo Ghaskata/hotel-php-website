@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2023 at 07:29 PM
+-- Generation Time: Sep 13, 2023 at 08:07 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -126,6 +126,98 @@ INSERT INTO `home_silder` (`id`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `area` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `adult` int(11) NOT NULL,
+  `children` int(11) NOT NULL,
+  `description` varchar(350) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `quantity`, `adult`, `children`, `description`, `status`) VALUES
+(1, 'simple', 101, 3000, 12, 2, 2, 'this is very nice room', 1),
+(13, 'simple', 7, 7, 12, 2, 7, 'facture 2 ,3\r\nfacility =26,30', 1),
+(14, 'Connect Room', 104, 8000, 46, 4, 4, 'These are two rooms connected by a locked adjoining door that can be opened by you and your fellow guests during your stay. located next to each other, and these rooms have a connecting door.', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_facility`
+--
+
+CREATE TABLE `room_facility` (
+  `sr_no` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `facilitiy_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `room_facility`
+--
+
+INSERT INTO `room_facility` (`sr_no`, `room_id`, `facilitiy_id`) VALUES
+(27, 13, 26),
+(28, 13, 30),
+(29, 14, 22),
+(30, 14, 23),
+(31, 14, 24),
+(32, 14, 25),
+(33, 14, 26),
+(34, 14, 27),
+(35, 14, 31),
+(36, 14, 33);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_features`
+--
+
+CREATE TABLE `room_features` (
+  `sr_no` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `feature_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `room_features`
+--
+
+INSERT INTO `room_features` (`sr_no`, `room_id`, `feature_id`) VALUES
+(29, 13, 2),
+(30, 13, 3),
+(31, 14, 1),
+(32, 14, 2),
+(33, 14, 3),
+(34, 14, 5),
+(35, 14, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_image`
+--
+
+CREATE TABLE `room_image` (
+  `sr_no` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `image` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `room_type`
 --
 
@@ -145,6 +237,27 @@ INSERT INTO `room_type` (`id`, `type`, `image`) VALUES
 (6, 'Luxury', '20725.jpg'),
 (7, 'Suits', '20106.jpg'),
 (8, 'Connect Room', '11515.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbltitles`
+--
+
+CREATE TABLE `tbltitles` (
+  `id` int(11) NOT NULL DEFAULT '1',
+  `Title` varchar(50) NOT NULL,
+  `slider_lg_msg` varchar(60) NOT NULL,
+  `slider_md_msg` varchar(60) NOT NULL,
+  `slider_sm_msg` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbltitles`
+--
+
+INSERT INTO `tbltitles` (`id`, `Title`, `slider_lg_msg`, `slider_md_msg`, `slider_sm_msg`) VALUES
+(1, 'TAJ HOTEL', 'Amazing Services , Location & Facilities', 'Life Is A Beautiful Journey , Live It Well', 'Best Place To Stay');
 
 -- --------------------------------------------------------
 
@@ -263,9 +376,43 @@ ALTER TABLE `home_silder`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `room_facility`
+--
+ALTER TABLE `room_facility`
+  ADD PRIMARY KEY (`sr_no`),
+  ADD KEY `facility_id` (`facilitiy_id`),
+  ADD KEY `room_id` (`room_id`);
+
+--
+-- Indexes for table `room_features`
+--
+ALTER TABLE `room_features`
+  ADD PRIMARY KEY (`sr_no`),
+  ADD KEY `feature_id` (`feature_id`),
+  ADD KEY `room id` (`room_id`);
+
+--
+-- Indexes for table `room_image`
+--
+ALTER TABLE `room_image`
+  ADD PRIMARY KEY (`sr_no`);
+
+--
 -- Indexes for table `room_type`
 --
 ALTER TABLE `room_type`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbltitles`
+--
+ALTER TABLE `tbltitles`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -309,6 +456,30 @@ ALTER TABLE `home_silder`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `room_facility`
+--
+ALTER TABLE `room_facility`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT for table `room_features`
+--
+ALTER TABLE `room_features`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `room_image`
+--
+ALTER TABLE `room_image`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
@@ -325,6 +496,24 @@ ALTER TABLE `usertbl`
 --
 ALTER TABLE `user_query`
   MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `room_facility`
+--
+ALTER TABLE `room_facility`
+  ADD CONSTRAINT `facility_id` FOREIGN KEY (`facilitiy_id`) REFERENCES `facilities` (`id`) ON UPDATE NO ACTION,
+  ADD CONSTRAINT `room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `room_features`
+--
+ALTER TABLE `room_features`
+  ADD CONSTRAINT `feature_id` FOREIGN KEY (`feature_id`) REFERENCES `features` (`id`) ON UPDATE NO ACTION,
+  ADD CONSTRAINT `room id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
