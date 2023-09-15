@@ -37,14 +37,14 @@ $login=userLogin();
           while ($row=mysqli_fetch_assoc($res)) {
             if ($i==1) {
               $result.='
-              <div class="carousel-item active" data-bs-interval="1000" style="width: 100%;height: 100vh;">
+              <div class="carousel-item active" data-bs-interval="1500" style="width: 100%;height: 100vh;">
                 <img src="images/carousel/'.$row['image'].'" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
               </div>';
               $i++;
             }
             else{
               $result.='
-              <div class="carousel-item" data-bs-interval="1000" style="width: 100%;height: 100vh;">
+              <div class="carousel-item" data-bs-interval="1500" style="width: 100%;height: 100vh;">
                 <img src="images/carousel/'.$row['image'].'" class="d-block w-100 h-100 carousel-image" alt="..." style="object-fit: cover;">
               </div>';
               $i++;
@@ -54,7 +54,7 @@ $login=userLogin();
         }
       ?>
     </div>
-    <div class="carousel-caption d-none d-md-block"style="top:5%;">
+    <div class="carousel-caption d-none d-md-block animate__animated animate__zoomIn"style="top:5%;">
       <h2 class="mt-4 mb-5 text-light" style="font-family:cursive;"><?php echo $slider_md_msg?></h2>
       <h5 class="text-white pt-4" style="font-size: 90px;font-family:'Times New Roman', Times, serif;"><?php echo $slider_lg_msg?></h5>
       <p class="m-3 pb-1 text-white"><?php echo $slider_sm_msg?></p>
@@ -70,38 +70,42 @@ $login=userLogin();
         <div class="col-12 shadow p-4 bg-white rounded">
             <h4 class="fs-3">Checking Rooms Booking Availability</h4>
             
-            <form>
+            <form method="POST" name="check" action="rooms.php">
                 <div class="row mt-4 align-items-end pb-3">
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                         <label for="check-in" class="form-lable mb-2" style="font-size: 500;">Check-In</label>
                         <input type="date" class="form-control shadow-none" name="check-in" id="check-in">
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                         <label for="check-out" class="form-lable mb-2" style="font-size: 500;">Check-Out</label>
                         <input type="date" class="form-control shadow-none" name="check-out" id="check-out">
                     </div>
                     <!-- <div class="col-lg-2">
                       <label class="form-label"> Guest </label>
                       <select class="form-select shadow-none" aria-label="Default select example">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">four</option>
-                        <option value="5">five</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-2">
-                      <label class="form-label"> Rooms </label>
-                      <select class="form-select shadow-none" aria-label="Default select example">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">four</option>
-                        <option value="5">five</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                       </select>
                     </div> -->
+                    <div class="col-lg-3">
+                      <label class="form-label"> Rooms </label>
+                      <select class="form-select shadow-none" aria-label="Default select example">
+                        <?php 
+                          $sql="SELECT * FROM `room_type`";
+                          $res=mysqli_query($con,$sql);
+                            if($res->num_rows>0){
+                              while($row=mysqli_fetch_assoc($res)){
+                                echo '<option value="'.$row['type'].'">'.$row['type'].'</option>';
+                              }
+                            }
+                        ?>
+                      </select>
+                    </div>
                     <div class="col-lg-1 mx-auto">
-                        <button type="submit" class="btn btn-primary border-0 shadow-none text-white fs-5 px-3 custom-btn">Check</button>
+                        <button type="submit" class="btn btn-primary btnBook border-0 shadow-none text-white fs-5 px-2 custom-btn">Check</button>
                     </div>
                 </div>
             </form>
@@ -137,11 +141,26 @@ $login=userLogin();
           echo $result;
         }
     ?>
-    
+  </div>  
   <div class="col-lg-12 text-center mt-5">
     <a href="rooms.php" class="btn btn-lg btn-outline-dark rounded-0 a-btn d-grid gap-2 col-3 mx-auto mb-5 mt-5"> More Rooms >>> </a>
   </div>
 </div>
+
+
+
+
+<script>
+  $(document).ready(function(e){
+    $('.book').click(function(e){
+      e.preventDefault();
+      $('form[name=check]').submit();
+    })
+  })
+
+
+  
+</script>
 
 
 <!-- footer -->

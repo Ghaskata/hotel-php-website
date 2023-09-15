@@ -80,12 +80,13 @@ if (isset($_POST['room_type'])&&$_POST['room_type']=="all") {
 if (isset($_POST['room_type']) && isset($_FILES['room_type_image']['name'])) {
     $type=$_POST['room_type'];
     $image=$_FILES['room_type_image']['name'];
+    $desc=$_POST['room_type_desc'];
     $ext=pathinfo($image,PATHINFO_EXTENSION);
     $newName=rand().".".$ext;   
     $path=$_SERVER['DOCUMENT_ROOT']."/hotel-php-website/images/slider/".$newName;
 
     if(move_uploaded_file($_FILES['room_type_image']['tmp_name'],$path)){
-        $sql="INSERT INTO `room_type`(`type`, `image`) VALUES ('$type','$newName');";
+        $sql="INSERT INTO `room_type`(`type`, `image`,`desc`) VALUES ('$type','$newName','$desc');";
         if ($res=mysqli_query($con,$sql)) {
             echo 'new slide add';
         }else{

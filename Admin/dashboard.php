@@ -74,9 +74,9 @@
                 </div>
                 <hr>
                 <form name="frmtitle" method="post">
-                    <div class="d-flex justify-content-between ms-2 me-5" id="">
+                    <div class="d-flex justify-content-between ms-2 me-5 animate__animated animate__fadeIn" id="">
                         <input type="text" name="websiteTitle" class="txttitle form-control fs-2 bg-light border-0 w-75" placeholder="enter Website title" value="<?php echo $websiteTitle; ?>" disabled>
-                        <button class="editTitle btn border-0 bg-light shadow-none"><i class="fa fa-pen-alt text-primary fs-3"></i></button>
+                        <button class="editTitle btn border-0 bg-light shadow-none animate__animated animate__bounceInRight"><i class="fa fa-pen-alt text-primary fs-3"></i></button>
                     </div>
                 </form>
             </div>
@@ -92,14 +92,14 @@
                 </div>
                 <hr>
                 <form name="frmcaption" method="post">
-                    <div class="row d-flex justify-content-between ms-2 me-5" id="">
+                    <div class="row d-flex justify-content-between ms-2 me-5 animate__animated animate__fadeIn" id="">
                         <div class="col-11">
                             <p class="fs-5 text-secondary">Top</p> <input type="text" name="slider_md_msg" class="slider_md_msg mt-1 form-control fs-4 bg-light border-0 border-bottom" placeholder="enter Slider Top Caption" value="<?php echo $slider_md_msg; ?>" disabled><br>
                             <p class="fs-5 text-secondary">Middle</p><input type="text" name="slider_lg_msg" class="slider_lg_msg mt-1 form-control fs-3 bg-light border-0 border-bottom" placeholder="enter Slider Middle Caption" value="<?php echo $slider_lg_msg; ?>" disabled><br>
                             <p class="fs-5 text-secondary">Bottom</p><input type="text" name="slider_sm_msg" class="slider_sm_msg mt-1 form-control fs-5 bg-light border-0 border-bottom" placeholder="enter Slider Bottom Caption" value="<?php echo $slider_sm_msg; ?>" disabled><br>
                         </div>
                         <div class="col-1">
-                            <button class="editCaption btn border-0 bg-light shadow-none"><i class="fa fa-pen-alt text-primary fs-3"></i></button>
+                            <button class="editCaption btn border-0 bg-light shadow-none animate__animated animate__bounceInRight"><i class="fa fa-pen-alt text-primary fs-3"></i></button>
                         </div>
                     </div>
                 </form>
@@ -169,6 +169,10 @@
                     <div class="mb-3">
                         <label class="form-label fw-bold">Room Image </label>
                         <input type="file" name="room_type_image" id="room_type_image" class="form-control shadow-none" accept=".jpg,.png,.jpeg,.webp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Room Description </label>
+                        <textarea name="room_type_desc" row=3 col=30 id="room_type_desc" class="form-control shadow-none" required></textarea>
                     </div>
                     <div class="modal-footer" >
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancle</button>

@@ -1,5 +1,5 @@
 <div class="bg-dark py-3 shadow d-flex align-items-center justify-content-between sticky-top">
-    <h1 class="ms-3 mb-0 h-font text-light"><?php echo $websiteTitle; ?> Booking Website</h1> 
+    <h1 class="ms-3 mb-0 h-font text-light animate__animated animate__fadeInDown"><?php echo $websiteTitle; ?> Booking Website</h1> 
     <a class="btn btn-primary me-5 fs-5 my-2 px-4" href="logout.php">LogOut</a>  
 </div>
 

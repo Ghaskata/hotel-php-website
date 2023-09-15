@@ -49,7 +49,7 @@ if (isset($_GET['del'])) {
                 </div>
 
                 <div class="table-responsive-md" style="height:50vh;overflow-y: scroll;">
-                    <table class="table table-hover">
+                    <table class="table table-hover text-center">
                         <thead class="sticky-top">
                             <tr class="bg-dark text-light">
                                 <th scope="col">No</th>
@@ -61,7 +61,7 @@ if (isset($_GET['del'])) {
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="animate__animated animate__fadeIn">
                             <?php
                                 $sql="SELECT * FROM `user_query` ORDER BY sr_no DESC";
                                 $res=mysqli_query($con,$sql);

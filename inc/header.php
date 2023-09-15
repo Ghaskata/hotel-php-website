@@ -26,16 +26,16 @@
           <?php
             if($login){
               // echo $_SESSION['userId'];
-              echo '<a class="btn btn-outline-success btnLogout shadow-none me-lg-3 me-2 px-3" href="logout.php">
+              echo '<a class="btn btn-outline-dark btnLogout shadow-none me-lg-3 py-auto me-2 px-3" href="logout.php">
                       LogOut
                     </a>
-                    <i class="fa fa-user-circle fs-1 p-0"></i>';
+                    <a href="profile.php" style="text-decoration:none;" class="btn shadow-none me-lg-3 me-2"><i class="fa fa-user-circle fs-2 p-0"></i></a>';
             }
             else{
-              echo '<button type="button" class="btn btn-outline-success shadow-none me-lg-3 me-2 px-3" data-bs-toggle="modal" data-bs-target="#LoginModal">
+              echo '<button type="button" class="btn btn-outline-dark btnlogin shadow-none me-lg-3 me-2 px-3" data-bs-toggle="modal" data-bs-target="#LoginModal">
                       Login
                     </button>
-                    <button type="button" class="btn btn-outline-success shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#RegistreModal">
+                    <button type="button" class="btn btn-outline-dark btnregi shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#RegistreModal">
                       Registre
                     </button>';
             }
@@ -68,7 +68,7 @@
         </div>
         <div class="mb-3 d-flex align-items-center justify-content-between" >
           <button type="submit" class="btn btn-outline-success shadow-none me-3"> LOGIN </button>
-          <a href="#" class="text-secondary text-decoration-none"> Forgot password ? </a>
+          <a onclick='$(".btnregi").click();' class="text-secondary text-decoration-none"> Create New Account ? </a>
         </div>
       </div>
     </div>

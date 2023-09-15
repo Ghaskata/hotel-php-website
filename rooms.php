@@ -20,7 +20,6 @@ $login=userLogin();
 </head>
 <body class="bg-light">
 
-
 <!-- navbar -->
 <?php
   require('./inc/header.php');
@@ -28,9 +27,9 @@ $login=userLogin();
 <!-- navbar end -->
 
 
-<div class="my-5 mx-4">
+<div class="mt-5 mb-1 mx-4">
   <h1 class="text-center h-font">OUR ROOMS</h1>
-  <div class="h-line bg-dark mb-4"></div>
+  <div class="h-line bg-dark"></div>
 </div>
 
 <!-- Our rooms -->
@@ -154,169 +153,79 @@ $login=userLogin();
 
 <div class="container">
   <div class="row">
-        
-    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
-      <div class="card shadow-lg" style="max-width:350px;">
-        <img src="images\rooms\r1.jpg" class="card-img-top ">
-        <div class="card-body">
-          <h4 class="room-card-title mb-3">Standard Rooms</h4>
-          <h6 class="mb-4"> ₹ 500 per night </h6> 
-          <p class="card-text">Perfect for the single person and for couple.A standard room can accommodate up to two guests.
-              The room may also have a small sitting area, such as a sofa or an armchair.</p>
-          <div class="mb-4">
-            <h6 class="mb-1">Rating</h6>
-            <span>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-            </span>
+      <?php
+      $sql="select * from `rooms`";
+      $res=mysqli_query($con,$sql);
+      if($res->num_rows>0){
+        while($row=mysqli_fetch_assoc($res))
+        {  
+          echo<<<print
+          <div class="col-lg-4 col-md-6 mt-5 mb-1 d-flex align-items-stretch"> 
+            <div class="card shadow animate__animated animate__zoomIn" style="max-width:350px;">
+                <img src="images/RoomsImg/$row[mimg]" class="card-img-top img-fluid">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <h4 class="pb-0">$row[name]</h4>
+                      <div class="mb-4">
+                          <span>
+                              <i class="fa-solid fa-star text-warning"></i>
+                              <i class="fa-solid fa-star text-warning"></i>
+                              <i class="fa-solid fa-star text-warning"></i>
+                              <i class="fa-solid fa-star text-warning"></i>
+                              <i class="fa-solid fa-star text-warning"></i>
+                          </span>
+                      </div>
+                    </div>
+                    <p class="pb-0 fs-5">₹ $row[price] price per night</p> 
+                    <div class="d-flex justify-content-evenly mb-3">
+                        <button class="btn btn-md bg-info shadow-none custom-bg" onclick="checkLogin()"> Book Now </button>
+                        <a href="single_room.php?room=$row[id]" class="btn btn-md btn-outline-dark shadow-none custom-bg"> More Details</a>
+                    </div>
+                </div>
+            </div>
           </div>
-          <div class="d-flex justify-content-evenly mb-3">
-            <a href="#" class="btn btn-md bg-info shadow-none custom-bg"> Book Now </a>
-            <a href="#" class="btn btn-md btn-outline-dark shadow-none custom-bg"> More Details</a>
-          </div>
-        </div>
-      </div>                        
-    </div>
-            
-    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
-      <div class="card shadow-lg" style="max-width:350px;">
-        <img src="images\rooms\c5.jpg" class="card-img-top ">
-        <div class="card-body">
-          <h4 class="room-card-title mb-3">Connect Room</h4>
-          <h6 class="mb-4"> ₹ 8000 per night </h6> 
-          <p class="card-text">These are two rooms connected by a locked adjoining door that can be opened by you and your fellow guests during your stay.
-          located next to each other, and these rooms have a connecting door. 
-          </p>
-          <div class="mb-4">
-            <h6 class="mb-1">Rating</h6>
-            <span>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-            </span>
-          </div>
-          <div class="d-flex justify-content-evenly mb-3">
-            <a href="#" class="btn btn-md btn-info shadow-none custom-bg"> Book Now </a>
-            <a href="#" class="btn btn-md btn-outline-dark shadow-none custom-bg"> More Details</a>
-          </div>
-        </div>                        
-      </div>
-    </div>
+print;
+        }
+      }
+      ?>
 
-    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
-      <div class="card shadow-lg" style="max-width:350px;">
-        <img src="images\rooms\d1.jpg" class="card-img-top">
-        <div class="card-body">
-          <h4 class="room-card-title mb-3">Dulex Rooms</h4>
-          <h6 class="mb-4"> ₹ 1000 per night </h6> 
-          <p class="card-text">Deluxe rooms are usually larger than their standard counterparts, 
-              may include a bathtub and a shower in the bathroom.
-              Deluxe Plus rooms offer extra floor space along with exceptional design features.</p>
-          <div class="mb-4">
-            <h6 class="mb-1">Rating</h6>
-            <span>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-            </span>
-          </div>
-          <div class="d-flex justify-content-evenly mb-3">
-            <a href="#" class="btn btn-md btn-info shadow-none custom-bg"> Book Now </a>
-            <a href="#" class="btn btn-md btn-outline-dark shadow-none custom-bg"> More Details</a>
-          </div>                   
-        </div>
-        </div>
-    </div>
-    
-    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
-      <div class="card shadow-lg" style="max-width:350px;">
-        <img src="images\rooms\s4.jpg" class="card-img-top">
-        <div class="card-body">
-          <h4 class="room-card-title mb-3">Super Dulex Rooms</h4>
-          <h6 class="mb-4"> ₹ 2000 per night </h6> 
-          <p class="card-text">Super deluxe room is spacious provided with sofa's, 
-                bath room fitted with bath tubs.
-                Some of the Super deluxe rooms are carpeted and some are having wooden flooring.</p>
-          <div class="mb-4">
-            <h6 class="mb-1">Rating</h6>
-            <span>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-            </span>
-          </div>
-          <div class="d-flex justify-content-evenly mb-3">
-            <a href="#" class="btn btn-md btn-info shadow-none custom-bg"> Book Now </a>
-            <a href="#" class="btn btn-md btn-outline-dark shadow-none custom-bg"> More Details</a>
-          </div>                    
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
-      <div class="card shadow-lg" style="max-width:350px;">
-        <img src="images\rooms\l1.jpg" class="card-img-top ">
-        <div class="card-body">
-          <h4 class="room-card-title mb-3">Luxury Rooms</h4>
-          <h6 class="mb-4"> ₹ 10000 per night </h6> 
-          <p class="card-text">Luxury Rooms are typically smaller, and have a clear creative sense and emphasis on design compared to traditional hotels.Beautiful views in every direction – inside and out.</p>
-          <div class="mb-4">
-            <h6 class="mb-1">Rating</h6>
-            <span>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-                <i class="fa-solid fa-star text-warning"></i>
-            </span>
-          </div>
-          <div class="d-flex justify-content-evenly mb-3">
-            <a href="#" class="btn btn-md btn-info shadow-none custom-bg"> Book Now </a>
-            <a href="#" class="btn btn-md btn-outline-dark shadow-none custom-bg"> More Details</a>
-          </div>
-        </div>                       
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6 mb-5 animate__animated animate__zoomIn"> 
-      <div class="card shadow-lg" style="max-width:350px;">
-        <img src="images\rooms\su2.jpg" class="card-img-top ">
-        <div class="card-body">
-          <h4 class="room-card-title mb-3">Suits</h4>
-          <h6 class="mb-4"> ₹ 15000 per night </h6> 
-          <p class="card-text">It usually refers to rooms together, like when you get a suite at a fancy hotel.
-              Suites class of accommodations with more space than a typical hotel room,but there should be more than one room to constitute a true suite.</p>
-          <div class="mb-4">
-            <h6 class="mb-1">Rating</h6>
-            <span>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-            </span>
-          </div>
-          <div class="d-flex justify-content-evenly mb-3">
-            <a href="#" class="btn btn-md btn-info shadow-none custom-bg"> Book Now </a>
-            <a href="#" class="btn btn-md btn-outline-dark shadow-none custom-bg"> More Details</a>
-          </div>
-        </div>                        
-      </div>
-    </div>
-
-  </div>  
+  </div>
 </div>
-
-
+<script>
+  function checkLogin(){
+    <?php
+      if ($login) {
+        echo "Swal.fire({
+          title: 'Book Room ? ',
+          text: 'You Are Really want to Book this Room ',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Book Now!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+            simpleAlert('Well Done !','Room Booked Successfully','success');
+          }
+      })";
+      }else{
+        echo "Swal.fire({
+            title: 'Login? 😒',
+            text: 'You wont be able to Book Room Please login first!',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Login Now!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('.btnlogin').click();
+            }
+        })";
+      }  
+    ?>
+  }
+</script>
 <!-- footer -->
 <?php
   require('./inc/footer.php');

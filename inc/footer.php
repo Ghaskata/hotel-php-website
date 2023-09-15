@@ -8,7 +8,7 @@
 </style>
 
 
-<div class="container-fluid bg-white mt-5 pt-4 shadow">
+<div class="container-fluid bg-white mt-5 pt-4 shadow mx-0">
     <div class="row pt-3 pb-4 m-auto">
         <div class="col-lg-6 px-4 py-1">
             <h2 class="h-font fw-bold mb-3 p-0 f-font"> <?php echo $websiteTitle; ?> </h2>

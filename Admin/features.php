@@ -82,7 +82,7 @@ if (isset($_GET['del'])) {
                                 <th scope="col" width="30%">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="animate__animated animate__fadeIn">
                             <?php
                                 $sql="SELECT * FROM `features`";
                                 $res=mysqli_query($con,$sql);
