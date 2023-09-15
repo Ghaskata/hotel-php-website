@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2023 at 08:07 PM
+-- Generation Time: Sep 15, 2023 at 11:29 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -66,13 +66,13 @@ INSERT INTO `facilities` (`id`, `icon`, `name`, `description`) VALUES
 (22, '12908.svg', 'WiFi', 'Our Hotel offers free Internet access For Our Customer. High-speed wireless Internet connection is complimentary both in the rooms and public areas.'),
 (23, '4149.svg', 'Parking', 'Our Hotel offers 24-hour indoor parking for its guests. The hotel is directly accessible from the indoor car park With High Quality CCTV camera for security.'),
 (24, '914.svg', 'TV', 'We Provides TV services are more than just a way to provide entertainment options for hotel guests. Cable TV providers for hotels typically offer solutions .'),
-(25, '13462.svg', 'Air-Conditioner', 'Air-conditioner is one of the necessary in our daily lives for regulating temperature. It creates a cool area during the hot summer and a warm area during the winter'),
+(25, '13462.svg', 'Air Conditioner', 'Air-conditioner is one of the necessary in our daily lives for regulating temperature. It creates a cool area during the hot summer and a warm area during the winter'),
 (26, '28544.svg', 'Medical', 'We provide this this service, typically have a wide range of units to save lives that can give emergencies dealing with non-intensive care and intensive care'),
 (27, '15562.svg', 'Room Service', 'Our Hotel provides 24-hour room service.Any time customer can call in reception area for any service . Please click here for Room Service menu.'),
 (29, '25115.svg', 'Fire Safty', 'Our Hotel provides Fire Safety Service . For customer Protection And sefety We provide fire safety services For fire related problems.'),
 (30, '24318.svg', 'Room Heater', 'Electric room heaters are provided with a curved, polished surface behind the rod-like heating element. This polished surface reflects back all the heat radiation falling on it.'),
 (31, '13391.svg', 'Swimming Pool', 'A hotel in a warm location is more likely to offer a swimming pool for guests to use, but even hotels in colder climates can benefit from offering swimming facilities.  '),
-(32, '1631.svg', 'Spa ', 'Guests can take advantage of spa at the hotel spa. Facials are very popular. We also provide in-room treatments, where a technician a massage, manicure, etc.'),
+(32, '1631.svg', 'Spa', 'Guests can take advantage of spa at the hotel spa. Facials are very popular. We also provide in-room treatments, where a technician a massage, manicure, etc.'),
 (33, '27434.svg', 'Wet Bar', 'A wet bar is a small area in a hotel room that is equipped with a sink, a refrigerator, and a selection of alcoholic beverages and mixers full of joy.'),
 (34, '5812.svg', 'Sound System', 'Our hotel sound system combines 32 stylish 3\" ceiling speakers with a powerful 350 watt Bluetooth mixer amplifier. Provide your guests with the ideal lodging .');
 
@@ -134,21 +134,23 @@ CREATE TABLE `rooms` (
   `name` varchar(150) NOT NULL,
   `area` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `adult` int(11) NOT NULL,
-  `children` int(11) NOT NULL,
-  `description` varchar(350) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1'
+  `mimg` varchar(100) DEFAULT NULL,
+  `sub1` varchar(100) DEFAULT NULL,
+  `sub2` varchar(100) DEFAULT NULL,
+  `sub3` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `quantity`, `adult`, `children`, `description`, `status`) VALUES
-(1, 'simple', 101, 3000, 12, 2, 2, 'this is very nice room', 1),
-(13, 'simple', 7, 7, 12, 2, 7, 'facture 2 ,3\r\nfacility =26,30', 1),
-(14, 'Connect Room', 104, 8000, 46, 4, 4, 'These are two rooms connected by a locked adjoining door that can be opened by you and your fellow guests during your stay. located next to each other, and these rooms have a connecting door.', 1);
+INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `mimg`, `sub1`, `sub2`, `sub3`) VALUES
+(18, 'Standard', 101, 2000, 'Standard-main.jpg', 'Standard-sub1.jpg', 'Standard-sub2.jpg', 'Standard-sub3.jpg'),
+(19, 'Dulex', 101, 4000, 'Dulex-main.jpg', 'Dulex-sub1.jpg', 'Dulex-sub2.jpg', 'Dulex-sub3.jpg'),
+(20, 'Luxury', 101, 15000, 'Luxury-main.jpg', 'Luxury-sub1.jpg', 'Luxury-sub2.jpg', 'Luxury-sub3.jpg'),
+(21, 'Connected', 101, 8000, 'Connected-main.jpg', 'Connected-sub1.jpg', 'Connected-sub2.jpg', 'Connected-sub3.jpg'),
+(22, 'Super Dulex', 101, 10000, 'Super Dulex-main.jpg', 'Super Dulex-sub1.jpg', 'Super Dulex-sub2.jpg', 'Super Dulex-sub3.jpg'),
+(23, 'Suits', 101, 20000, 'Suits-101-main.jpg', 'Suits-101-sub1.jpg', 'Suits-101-sub2.jpg', 'Suits-101-sub3.jpg');
 
 -- --------------------------------------------------------
 
@@ -167,16 +169,41 @@ CREATE TABLE `room_facility` (
 --
 
 INSERT INTO `room_facility` (`sr_no`, `room_id`, `facilitiy_id`) VALUES
-(27, 13, 26),
-(28, 13, 30),
-(29, 14, 22),
-(30, 14, 23),
-(31, 14, 24),
-(32, 14, 25),
-(33, 14, 26),
-(34, 14, 27),
-(35, 14, 31),
-(36, 14, 33);
+(46, 18, 22),
+(47, 18, 23),
+(48, 18, 24),
+(49, 18, 25),
+(50, 18, 27),
+(51, 19, 22),
+(52, 19, 23),
+(53, 19, 24),
+(54, 19, 31),
+(55, 19, 32),
+(56, 19, 33),
+(57, 20, 25),
+(58, 20, 27),
+(59, 20, 31),
+(60, 20, 32),
+(61, 20, 33),
+(62, 20, 34),
+(63, 21, 24),
+(64, 21, 27),
+(65, 21, 32),
+(66, 21, 33),
+(67, 21, 34),
+(68, 22, 23),
+(69, 22, 27),
+(70, 22, 31),
+(71, 22, 32),
+(72, 22, 33),
+(73, 22, 34),
+(74, 23, 23),
+(75, 23, 24),
+(76, 23, 27),
+(77, 23, 31),
+(78, 23, 32),
+(79, 23, 33),
+(80, 23, 34);
 
 -- --------------------------------------------------------
 
@@ -195,25 +222,30 @@ CREATE TABLE `room_features` (
 --
 
 INSERT INTO `room_features` (`sr_no`, `room_id`, `feature_id`) VALUES
-(29, 13, 2),
-(30, 13, 3),
-(31, 14, 1),
-(32, 14, 2),
-(33, 14, 3),
-(34, 14, 5),
-(35, 14, 7);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `room_image`
---
-
-CREATE TABLE `room_image` (
-  `sr_no` int(11) NOT NULL,
-  `room_id` int(11) NOT NULL,
-  `image` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(44, 18, 1),
+(45, 18, 3),
+(46, 18, 5),
+(47, 18, 7),
+(48, 19, 1),
+(49, 19, 2),
+(50, 19, 3),
+(51, 19, 5),
+(52, 20, 2),
+(53, 20, 4),
+(54, 20, 6),
+(55, 20, 7),
+(56, 21, 1),
+(57, 21, 2),
+(58, 21, 3),
+(59, 21, 4),
+(60, 22, 1),
+(61, 22, 2),
+(62, 22, 3),
+(63, 22, 6),
+(64, 23, 1),
+(65, 23, 2),
+(66, 23, 6),
+(67, 23, 7);
 
 -- --------------------------------------------------------
 
@@ -224,19 +256,21 @@ CREATE TABLE `room_image` (
 CREATE TABLE `room_type` (
   `id` int(11) NOT NULL,
   `type` varchar(100) NOT NULL,
-  `image` varchar(100) NOT NULL
+  `image` varchar(100) NOT NULL,
+  `desc` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `room_type`
 --
 
-INSERT INTO `room_type` (`id`, `type`, `image`) VALUES
-(4, 'Standard', '3852.jpg'),
-(5, 'Dulex', '32300.jpg'),
-(6, 'Luxury', '20725.jpg'),
-(7, 'Suits', '20106.jpg'),
-(8, 'Connect Room', '11515.jpg');
+INSERT INTO `room_type` (`id`, `type`, `image`, `desc`) VALUES
+(4, 'Standard', '3852.jpg', 'A minimalist room is designed and set up with less furniture and accessories for an uncluttered space. With furniture, décor, storage and organization a minimalist room can be just what you want. Regardless of size and budget a bedroom or living room can be minimalist and still meet your needs.'),
+(5, 'Dulex', '32300.jpg', 'Deluxe room: these rooms might be a bit bigger with slightly upgraded amenities or a nicer view. These rooms are typically equipped for groups who need more space, like a couple or small family.'),
+(6, 'Luxury', '20725.jpg', 'A Luxury Hotel is considered a hotel that provides a luxurious accommodation experience to the guest. There are no set standards (such as stars) for luxury hotels. Often 4 or 5-star hotels describe themselves as ‘luxury’.'),
+(7, 'Suits', '20106.jpg', 'A suite in a hotel or other public accommodation (e.g. a cruise ship) denotes, according to most dictionary definitions, connected rooms under one room number. Hotels may refer to suites as a class of accommodations with more space than a typical hotel room, but technically speaking there should be more than one room to constitute a true suite.'),
+(8, 'Connected', '11515.jpg', 'Two guest rooms are connected by a locked door to an adjoining room, which is also connected by a locked door. Adjoining rooms can be booked separately by two different people. What does a connecting suite mean? The trick is booking what the industry calls a connecting suite or connecting room instead of a traditional suite.'),
+(10, 'Super Dulex', '20588.jpg', 'Super Deluxe – An exclusive and expensive luxury hotel, often palatial, offering the highest standards of service, accommodations and facilities. Elegant and luxurious public rooms. A prestigious address.');
 
 -- --------------------------------------------------------
 
@@ -379,7 +413,7 @@ ALTER TABLE `home_silder`
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`,`name`,`area`);
 
 --
 -- Indexes for table `room_facility`
@@ -398,16 +432,10 @@ ALTER TABLE `room_features`
   ADD KEY `room id` (`room_id`);
 
 --
--- Indexes for table `room_image`
---
-ALTER TABLE `room_image`
-  ADD PRIMARY KEY (`sr_no`);
-
---
 -- Indexes for table `room_type`
 --
 ALTER TABLE `room_type`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`,`type`);
 
 --
 -- Indexes for table `tbltitles`
@@ -459,31 +487,25 @@ ALTER TABLE `home_silder`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `room_facility`
 --
 ALTER TABLE `room_facility`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `room_features`
 --
 ALTER TABLE `room_features`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `room_image`
---
-ALTER TABLE `room_image`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `usertbl`
