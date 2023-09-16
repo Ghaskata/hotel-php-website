@@ -34,18 +34,31 @@
               // echo "file not exists";
           }
       }
-      $facility="DELETE FROM `room_facility` WHERE `room_id`='$id';";
-      $feature="DELETE FROM `room_features` WHERE `room_id`='$id';";
-      if (mysqli_query($con,$facility)|| mysqli_query($con,$feature)) {
-        $sql="DELETE FROM `rooms` WHERE `id`='$id';";
-        if(mysqli_query($con,$sql))
-        {
-            timerAlert("success","Rooms Deleted Succesfully!!!",1500,'center');
-        }
-        else{
-            simpleAlert('ERROR!',"Room Delete Opration Failed","error");
-        }
-      }
+
+    $faci_sql="SELECT * FROM `room_facility` WHERE `room_id`=".$id;
+    $fea_sql="SELECT * FROM `room_features` WHERE `room_id`=".$id;
+
+    $faci_res=mysqli_query($con,$faci_sql);
+    $fea_res=mysqli_query($con,$fea_sql);
+
+    if($faci_res->num_rows>0){
+        $facility="DELETE FROM `room_facility` WHERE `room_id`='$id';";
+        mysqli_query($con,$facility);
+    }
+    if($fea_res->num_rows>0){
+        $feature="DELETE FROM `room_features` WHERE `room_id`='$id';";
+        mysqli_query($con,$feature);
+    }
+        
+        
+    $sql="DELETE FROM `rooms` WHERE `id`='$id';";
+    if(mysqli_query($con,$sql))
+    {
+        timerAlert("success","Rooms Deleted Succesfully!!!",1500,'center');
+    }
+    else{
+        simpleAlert('ERROR!',"Room Delete Opration Failed","error");
+    }
       
   }
 ?>
@@ -249,25 +262,25 @@ datarow;
                                         <input type="text" id="price" name="price" class="form-control shadow-none" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6 ps-0 mb-3">
+                                <div class="col-md-6 ps-0 mb-3 roomImg">
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Main Image</label>
                                         <input type="file" id="mimg" accept=".jpg,.png,.jpeg,.webp" name="mimg" class="form-control shadow-none" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4 ps-0 mb-3">
+                                <div class="col-md-4 ps-0 mb-3 roomImg">
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Sub 1</label>
                                         <input type="file" id="sub1" accept=".jpg,.png,.jpeg,.webp" name="sub1" class="form-control shadow-none" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4 ps-0 mb-3">
+                                <div class="col-md-4 ps-0 mb-3 roomImg">
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Sub 2</label>
                                         <input type="file" id="sub2" accept=".jpg,.png,.jpeg,.webp" name="sub2" class="form-control shadow-none" required>
                                     </div>
                                 </div>
-                                <div class="col-md-4 ps-0 mb-3">
+                                <div class="col-md-4 ps-0 mb-3 roomImg">
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Sub 3</label>
                                         <input type="file" id="sub3" accept=".jpg,.png,.jpeg,.webp" name="sub3" class="form-control shadow-none" required>
@@ -333,7 +346,8 @@ datarow;
                             </div>
                             <div class="modal-footer" >
                                 <button type="button" class="btn btn-secondary btncancle" data-bs-dismiss="modal">cancle</button>
-                                <button type="submit" id="submit" class="btn btn-success shadow-none me-3"> Add Room</button>
+                                <button type="submit" id="submit" class="btn btn-success submit shadow-none me-3 d-block"> Add Room</button>
+                                <button id="update" class="btn btn-primary update shadow-none me-3"> Update</button>
                             </div>
                         </div>
                     </form> 
@@ -344,24 +358,28 @@ datarow;
     
       <script>
         $(document).ready(function(){
-            $('#roomsModel_form').submit(function(e){
+
+            $('#submit').click(function(e){
                 e.preventDefault();
                 $.ajax({
                     url:'ajax/room-curd.php',
-                    data:new FormData(this),
+                    data:new FormData($('#roomsModel_form')[0]),
                     method:'POST',
                     processData:false,
                     contentType:false,
                     success:function(data){
-                        alert(data);
+                        alert(data)
                         if(data=="added"){
                             <?php timerAlertForScript("success","New Room Added Succesfully",2000,'center'); ?>
                         setInterval(() => {
                             location.reload(true);
                         }, 2000);
                         }
+                        else if(data=="room is already available"){
+                            <?php simpleAlertForScript('ERROR!',"Room Add Opration Failed Because Room is Already Available","error");?>
+                        }
                         else{
-                            <?php simpleAlertForScript('ERROR!',"Room Add Opration Failed","error");?>
+                            <?php simpleAlertForScript('ERROR!',"Opration Failed","error");?>
                         }
                     },
                     error:function(){
@@ -370,6 +388,31 @@ datarow;
                 })
             })
 
+            $('#update').click(function(e){
+                e.preventDefault();
+                $('#room_name').removeAttr('disabled')
+                $('#area').removeAttr('disabled')
+                $.ajax({
+                    url:'ajax/room-curd.php',
+                    data:$('#roomsModel_form').serialize(),
+                    method:'PATCH',
+                    success:function(data){
+                        alert(data)
+                        if(data){
+                            <?php timerAlertForScript("success","Room Updated Succesfully",2000,'center'); ?>
+                        setInterval(() => {
+                            location.reload(true);
+                        }, 2000);
+                        }
+                        else{
+                            <?php simpleAlertForScript('ERROR!',"Room Updated Opration Failed","error");?>
+                        }
+                    },
+                    error:function(){
+                        alert('error')
+                    }
+                })
+            })
 
             $('.btnadd').click(function(){
                 $('.modal-title').text("Add New Room");
@@ -384,6 +427,9 @@ datarow;
                 $.each($("input[name='feature[]']:checked"), function(){    
                     $(this).removeAttr('checked');
                 }); 
+                $('#submit').removeClass('d-none').addClass("d-block");
+                $('#update').removeClass("d-block").addClass("d-none");
+                $('.roomImg').show();
             })
             
             $('.btncancle').click(function(){
@@ -398,12 +444,39 @@ datarow;
                 $.each($("input[name='feature[]']:checked"), function(){    
                     $(this).removeAttr('checked');
                 }); 
+                $('.roomImg').show();
+            })
+
+
+            $('.btndelete').click(function(e){
+                var url = e.currentTarget.getAttribute('href')
+                console.log(url);
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure ?',
+                    text: "You want to Delete This Room ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href=url;
+                        setInterval(() => {
+                            location.reload(true);
+                        }, 2000);
+                    }
+                    else{
+                        window.location.href='/hotel-php-website/admin/rooms.php';
+                    }
+                });
             })
 
         })
         function editRoom(id){
             $.ajax({
-                type:'POST',
+                type:'GET',
                 url:'ajax/room-curd.php',
                 data:{editRoomId:id},
                 success:function(data){
@@ -433,7 +506,11 @@ datarow;
                     }
                 }
             });
+
             $('.modal-title').text("Update Room");
+            $('.roomImg').hide();
+            $('#submit').removeClass('d-block').addClass("d-none");
+            $('#update').removeClass("d-none").addClass("d-block");
             $('.btnupdate').click();
         }
       </script>
