@@ -73,6 +73,41 @@ if (isset($_GET['del'])) {
                     </form> 
                 </div> -->
 
+                <?php
+                
+                    if (isset($_POST['updateFea'])) {
+                        $id=$_POST['updateFea'];
+                        $name1=$_POST['feature_name'];
+                        $sql="UPDATE `features` SET `name`='$name1' WHERE `id`='$id'";
+                        if ($res=mysqli_query($con,$sql)) {
+                            timerAlert('success','Feature updated successfully',1000,'center');
+                        }else{
+                            // echo mysqli_error($con);
+                        }
+                    }
+
+                    if (isset($_POST['btnupdate'])) {
+                        $id1= $_POST['btnupdate'];
+                        $sql1="SELECT * FROM `features` WHERE `id`='$id1'";
+                        $res1=mysqli_query($con,$sql1);
+                        if($res1->num_rows==1){
+                            $row1=mysqli_fetch_assoc($res1);
+                            echo<<<print
+                            <form method="POST" class="row align-items-end">
+                                <div class="col-9 mb-3">
+                                    <label class="form-label fw-bold">Feature Name </label>
+                                    <input type="text" id="feature_name" name="feature_name" value="$row1[name]" class="form-control shadow-none"/>
+                                </div> 
+                                <div class="col-3 mb-3 ml-5">
+                                    <button class="btn btn-secondary ms-3 me-1">cancle</button>
+                                    <button name="updateFea" class="btn btn-primary shadow-none" value="$id1"> update Feature</button>
+                                </div>
+                            </form> 
+print;
+                        }
+                    }
+                ?>
+
                 <div class="table-responsive-md" style="height:0v6h;overflow-y: scroll;">
                     <table class="table table-hover text-center">
                         <thead class="sticky-top">
@@ -84,17 +119,18 @@ if (isset($_GET['del'])) {
                         </thead>
                         <tbody class="animate__animated animate__fadeIn">
                             <?php
-                                $sql="SELECT * FROM `features`";
+                                $sql="SELECT * FROM `features` ORDER BY `id` DESC";
                                 $res=mysqli_query($con,$sql);
                                 if($res->num_rows>0){
                                     $i=1;
                                     while ($row=mysqli_fetch_assoc($res)) {
+                                        $update="<button type='submit' value='$row[id]' name='btnupdate' class='btn btn-sm btnupdate btn-primary me-5'><i class='fa fa-edit me-2'></i>Edit</button>";
                                         $delete="<a href='?del=$row[id]' class='btn btn-sm btndelete btn-danger'><i class='fa fa-trash me-2'></i>Delete</a>";
                                         echo<<<datarow
                                             <tr>
                                                 <td>$i</td>
                                                 <td>$row[name]</td>
-                                                <td>$delete</td>
+                                                <td><form method="POST">$update   $delete</form></td>
                                             </tr>
 datarow;
                                         $i++;
@@ -120,7 +156,7 @@ datarow;
                     if(data){
                         <?php timerAlertForScript("success","New Feature Added Succesfully",2000,"center"); ?>
                         setInterval(() => {
-                            location.reload(true);
+                            window.location.href='/hotel-php-website/Admin/features.php';
                         }, 2000);
                     }else{
                         <?php simpleAlertForScript('ERROR!',"Opration Failed","error");?>

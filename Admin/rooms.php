@@ -468,7 +468,7 @@ datarow;
                         }, 2000);
                     }
                     else{
-                        window.location.href='/hotel-php-website/admin/rooms.php';
+                        window.location.href='/hotel-php-website/Admin/rooms.php';
                     }
                 });
             })
