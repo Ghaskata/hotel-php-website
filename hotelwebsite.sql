@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2023 at 01:20 PM
+-- Generation Time: Sep 19, 2023 at 03:35 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -293,7 +293,13 @@ CREATE TABLE `tblbooking` (
 
 INSERT INTO `tblbooking` (`id`, `checkin`, `checkout`, `uid`, `rid`, `bookingDate`, `total_day`) VALUES
 (11, '2023-09-17', '2023-09-19', 9, 20, '2023-09-19 16:46:58', 2),
-(12, '2023-09-19', '2023-09-27', 9, 23, '2023-09-19 16:49:45', 8);
+(12, '2023-09-19', '2023-09-27', 9, 23, '2023-09-19 16:49:45', 8),
+(13, '2023-09-19', '2023-09-21', 11, 19, '2023-09-19 18:03:02', 2),
+(14, '2023-09-19', '2023-09-21', 11, 19, '2023-09-19 18:03:49', 2),
+(15, '2023-09-19', '2023-09-21', 11, 19, '2023-09-19 18:05:41', 2),
+(16, '2023-09-06', '2023-09-13', 11, 19, '2023-09-19 18:07:06', 7),
+(17, '2023-09-12', '2023-09-21', 11, 19, '2023-09-19 18:08:38', 9),
+(18, '2023-09-07', '2023-09-08', 11, 19, '2023-09-19 18:25:19', 1);
 
 -- --------------------------------------------------------
 
@@ -542,7 +548,7 @@ ALTER TABLE `room_type`
 -- AUTO_INCREMENT for table `tblbooking`
 --
 ALTER TABLE `tblbooking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `usertbl`
