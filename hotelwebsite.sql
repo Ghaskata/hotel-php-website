@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2023 at 09:23 AM
+-- Generation Time: Sep 19, 2023 at 01:20 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -274,6 +274,30 @@ INSERT INTO `room_type` (`id`, `type`, `image`, `desc`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tblbooking`
+--
+
+CREATE TABLE `tblbooking` (
+  `id` int(11) NOT NULL,
+  `checkin` date NOT NULL,
+  `checkout` date NOT NULL,
+  `uid` int(11) NOT NULL,
+  `rid` int(11) NOT NULL,
+  `bookingDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total_day` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblbooking`
+--
+
+INSERT INTO `tblbooking` (`id`, `checkin`, `checkout`, `uid`, `rid`, `bookingDate`, `total_day`) VALUES
+(11, '2023-09-17', '2023-09-19', 9, 20, '2023-09-19 16:46:58', 2),
+(12, '2023-09-19', '2023-09-27', 9, 23, '2023-09-19 16:49:45', 8);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbltitles`
 --
 
@@ -437,6 +461,14 @@ ALTER TABLE `room_type`
   ADD PRIMARY KEY (`id`,`type`);
 
 --
+-- Indexes for table `tblbooking`
+--
+ALTER TABLE `tblbooking`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`uid`),
+  ADD KEY `rid` (`rid`);
+
+--
 -- Indexes for table `tbltitles`
 --
 ALTER TABLE `tbltitles`
@@ -507,6 +539,12 @@ ALTER TABLE `room_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `tblbooking`
+--
+ALTER TABLE `tblbooking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `usertbl`
 --
 ALTER TABLE `usertbl`
@@ -535,6 +573,13 @@ ALTER TABLE `room_facility`
 ALTER TABLE `room_features`
   ADD CONSTRAINT `feature_id` FOREIGN KEY (`feature_id`) REFERENCES `features` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `room id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tblbooking`
+--
+ALTER TABLE `tblbooking`
+  ADD CONSTRAINT `rid` FOREIGN KEY (`rid`) REFERENCES `rooms` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`uid`) REFERENCES `usertbl` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
