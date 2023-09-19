@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2023 at 11:29 PM
+-- Generation Time: Sep 19, 2023 at 09:23 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -63,7 +63,7 @@ CREATE TABLE `facilities` (
 --
 
 INSERT INTO `facilities` (`id`, `icon`, `name`, `description`) VALUES
-(22, '12908.svg', 'WiFi', 'Our Hotel offers free Internet access For Our Customer. High-speed wireless Internet connection is complimentary both in the rooms and public areas.'),
+(22, '12908.svg', 'Wifi', 'Our Hotel offers free Internet access For Our Customer. High-speed wireless Internet connection is complimentary both in the rooms and public areas.'),
 (23, '4149.svg', 'Parking', 'Our Hotel offers 24-hour indoor parking for its guests. The hotel is directly accessible from the indoor car park With High Quality CCTV camera for security.'),
 (24, '914.svg', 'TV', 'We Provides TV services are more than just a way to provide entertainment options for hotel guests. Cable TV providers for hotels typically offer solutions .'),
 (25, '13462.svg', 'Air Conditioner', 'Air-conditioner is one of the necessary in our daily lives for regulating temperature. It creates a cool area during the hot summer and a warm area during the winter'),
@@ -92,7 +92,7 @@ CREATE TABLE `features` (
 --
 
 INSERT INTO `features` (`id`, `name`) VALUES
-(1, 'WiFi'),
+(1, 'an'),
 (2, 'AC'),
 (3, 'BedRoom'),
 (4, 'Balcony'),
@@ -174,12 +174,6 @@ INSERT INTO `room_facility` (`sr_no`, `room_id`, `facilitiy_id`) VALUES
 (48, 18, 24),
 (49, 18, 25),
 (50, 18, 27),
-(51, 19, 22),
-(52, 19, 23),
-(53, 19, 24),
-(54, 19, 31),
-(55, 19, 32),
-(56, 19, 33),
 (57, 20, 25),
 (58, 20, 27),
 (59, 20, 31),
@@ -203,7 +197,12 @@ INSERT INTO `room_facility` (`sr_no`, `room_id`, `facilitiy_id`) VALUES
 (77, 23, 31),
 (78, 23, 32),
 (79, 23, 33),
-(80, 23, 34);
+(80, 23, 34),
+(117, 19, 27),
+(118, 19, 31),
+(119, 19, 32),
+(120, 19, 33),
+(121, 19, 34);
 
 -- --------------------------------------------------------
 
@@ -226,10 +225,6 @@ INSERT INTO `room_features` (`sr_no`, `room_id`, `feature_id`) VALUES
 (45, 18, 3),
 (46, 18, 5),
 (47, 18, 7),
-(48, 19, 1),
-(49, 19, 2),
-(50, 19, 3),
-(51, 19, 5),
 (52, 20, 2),
 (53, 20, 4),
 (54, 20, 6),
@@ -245,7 +240,11 @@ INSERT INTO `room_features` (`sr_no`, `room_id`, `feature_id`) VALUES
 (64, 23, 1),
 (65, 23, 2),
 (66, 23, 6),
-(67, 23, 7);
+(67, 23, 7),
+(91, 19, 1),
+(92, 19, 2),
+(93, 19, 5),
+(94, 19, 7);
 
 -- --------------------------------------------------------
 
@@ -265,12 +264,12 @@ CREATE TABLE `room_type` (
 --
 
 INSERT INTO `room_type` (`id`, `type`, `image`, `desc`) VALUES
-(4, 'Standard', '3852.jpg', 'A minimalist room is designed and set up with less furniture and accessories for an uncluttered space. With furniture, décor, storage and organization a minimalist room can be just what you want. Regardless of size and budget a bedroom or living room can be minimalist and still meet your needs.'),
+(4, 'Standard', '3852.jpg', 'A minimalist room is designed and set up with less furniture and accessories for an uncluttered space. With furniture, door, storage and organization a minimalist room can be just what you want. Regardless of size and budget a bedroom or living room can be minimalist and still meet your needs.'),
 (5, 'Dulex', '32300.jpg', 'Deluxe room: these rooms might be a bit bigger with slightly upgraded amenities or a nicer view. These rooms are typically equipped for groups who need more space, like a couple or small family.'),
-(6, 'Luxury', '20725.jpg', 'A Luxury Hotel is considered a hotel that provides a luxurious accommodation experience to the guest. There are no set standards (such as stars) for luxury hotels. Often 4 or 5-star hotels describe themselves as ‘luxury’.'),
+(6, 'Luxury', '20725.jpg', 'A Luxury Hotel is considered a hotel that provides a luxurious accommodation experience to the guest. There are no set standards (such as stars) for luxury hotels. Often 4 or 5-star hotels describe themselves as Luxury.'),
 (7, 'Suits', '20106.jpg', 'A suite in a hotel or other public accommodation (e.g. a cruise ship) denotes, according to most dictionary definitions, connected rooms under one room number. Hotels may refer to suites as a class of accommodations with more space than a typical hotel room, but technically speaking there should be more than one room to constitute a true suite.'),
 (8, 'Connected', '11515.jpg', 'Two guest rooms are connected by a locked door to an adjoining room, which is also connected by a locked door. Adjoining rooms can be booked separately by two different people. What does a connecting suite mean? The trick is booking what the industry calls a connecting suite or connecting room instead of a traditional suite.'),
-(10, 'Super Dulex', '20588.jpg', 'Super Deluxe – An exclusive and expensive luxury hotel, often palatial, offering the highest standards of service, accommodations and facilities. Elegant and luxurious public rooms. A prestigious address.');
+(11, 'Super Dulex', '19054.jpg', 'Super Deluxe â€“ An exclusive and expensive luxury hotel, often palatial, offering the highest standards of service, accommodations and facilities. Elegant and luxurious public rooms. A prestigious address.');
 
 -- --------------------------------------------------------
 
@@ -493,19 +492,19 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `room_facility`
 --
 ALTER TABLE `room_facility`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `room_features`
 --
 ALTER TABLE `room_features`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `usertbl`
