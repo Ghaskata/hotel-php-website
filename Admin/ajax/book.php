@@ -1,7 +1,6 @@
 <?php
 require('../inc/db_conn.php');
 require('../inc/func.php');
-adminLogin();
 
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     $roomid=$_POST['roomid'];

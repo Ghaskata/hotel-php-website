@@ -28,8 +28,8 @@
     ?>
 <div id="recipt" style="width: 90%;margin: auto;border: 1px solid grey; padding:15px 30px;">
     <div class="mb-1">
-        <h3 style="margin-bottom: 0;">Reciept No : <span>djs</span></h3>
-        <h3 style="margin-bottom: 0;">Reciept Date : <span>djs</span></h3>
+        <h3 style="margin-bottom: 0;">Reciept No : <span><?=$row2['id']?></span></h3>
+        <h3 style="margin-bottom: 0;">Reciept Date : <span><?=date('d/m/Y')?></span></h3>
     </div>
     <div style="width: 100%;background: rgba(128, 128, 128, 0.281);margin: 0;padding: 0;">
         <h1 style="text-align: center; padding: 15px;">TAJ HOTEL</h1>
@@ -67,20 +67,21 @@
             </div>
         </div>
         <div>
-            <div style="display: flex;justify-content: space-between;margin:0px 10px;">
+            <div style="display: flex;justify-content: space-between;margin:0px 10px;align-items: end;">
                 <h3>Price Per Night (Rs.)</h3>
                 <p style="font-size: 1.2rem;margin-top: 5px;" class="fs-5"><?=$row['price']?></p>
             </div>
-            <div style="display: flex;justify-content: space-between;margin:0px 10px;">
+            <div style="display: flex;justify-content: space-between;margin:0px 10px;align-items: end;">
                 <h3>Total No Of Night</h3>
                 <h3>( × )</h3>
                 <p style="font-size: 1.2rem;margin-top: 5px;" class="fs-5"><?=$row2['total_day']?></p>
             </div>
             <hr>
-            <div style="display: flex;justify-content: space-between;margin:0px 10px;">
+            <div style="display: flex;justify-content: space-between;margin:0px 10px;align-items: end;">
                 <h3>Total Amount(Rs.)</h3>
-                <h2><?php echo $row['price']*$row2['total_day']?></h2>
+                <h2 style="margin: 10px;"><?php echo $row['price']*$row2['total_day']?> /-</h2>
             </div>
+            <hr style="width: 120px;margin-left: auto;margin-right: 0;">
             <hr style="width: 120px;margin-left: auto;margin-right: 0;">
             <div style="display: flex;justify-content: end;margin-top: 40px;">
                 <button style="background:rgb(9, 87, 9);color: aliceblue;padding: 10px 30px;font-size: large;border: 0;" onclick="generateReciept()">print</button>

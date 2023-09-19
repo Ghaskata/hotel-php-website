@@ -132,7 +132,40 @@ $login=userLogin();
             echo "
             var checkin=$('#check-in').val();
             var checkout=$('#check-out').val();
+            var book=false;
             if(checkin){
+                if(checkout){
+                    if(checkin<checkout){
+                        book=true;
+                    }else{
+                        Swal.fire({
+                            title: 'wrong !',
+                            text: 'check out date should greater than check in date',
+                            icon: 'warning',
+                            confirmButtonText: 'Ok'
+                        });
+                        return;
+                    }
+                }else{
+                    Swal.fire({
+                        title: 'Missing !',
+                        text: 'For Room Book check out date require',
+                        icon: 'warning',
+                        confirmButtonText: 'Ok'
+                    });
+                    return;
+                }
+            }
+            else{
+                Swal.fire({
+                    title: 'Missing !',
+                    text: 'For Room Book Check in and check out date require',
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                });
+                return;
+            }
+            if(book){
                 Swal.fire({
                     title: 'Book Room ? ',
                     text: 'You Are Really want to Book this Room ',
@@ -159,15 +192,6 @@ $login=userLogin();
                           });
                     }
                 })
-            }
-            else{
-                Swal.fire({
-                    title: 'SomeThing Missing !',
-                    text: 'For Room Booke Check in and check out date require',
-                    icon: 'warning',
-                    confirmButtonText: 'Ok'
-                });
-                return;
             }
             ";
         }else{

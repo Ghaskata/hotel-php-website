@@ -28,6 +28,9 @@
                     <li class="nav-item">
                         <a href="users_query.php" class="nav-link text-white">Users Queries</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="booked_room.php" class="nav-link text-white">Booked Room</a>
+                    </li>
                 </ul>
             </div>
         </div>
