@@ -205,7 +205,12 @@ print;
           confirmButtonText: 'Book Now!'
       }).then((result) => {
           if (result.isConfirmed) {
-            simpleAlert('Well Done !','Room Booked Successfully','success');
+            Swal.fire({
+                title: 'Well Done !',
+                text: 'Room Booked Successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
           }
       })";
       }else{

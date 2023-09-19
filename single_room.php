@@ -36,7 +36,7 @@ $login=userLogin();
                 $faci_res=mysqli_query($con,$faci_sql);
                 $fea_res=mysqli_query($con,$fea_sql);
                 
-    ?>            
+    ?>  
                 <h2 class="mb-3 pt-4 text-center fw-bold h-font"><?php echo $row['type']?> Rooms </h2>
                 <div class="container-fluide px-3 check-avalibility">
                     <div class="row">     
@@ -67,7 +67,17 @@ $login=userLogin();
                                 <i class="fa-solid fa-star text-warning"></i>
                                 <i class="fa-solid fa-star text-warning"></i>
                                 <i class="fa-solid fa-star text-warning"></i>
-                            </span>                                                        
+                            </span>          
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="check-in" class="form-lable mb-2" style="font-size: 500;">Check-In</label>
+                                    <input type="date" class="form-control shadow-none" name="check-in" id="check-in" required>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="check-out" class="form-lable mb-2" style="font-size: 500;">Check-Out</label>
+                                    <input type="date" class="form-control shadow-none" name="check-out" id="check-out" required>
+                                </div>
+                            </div>                                              
                         <div class="row">
                             <h3 class="mb-1 mt-4 ps-3 fw-bold g-font"> Feactures </h3>
                             <div class="row ps-3">
@@ -93,7 +103,7 @@ $login=userLogin();
                                 ?>
                             </ul>
                             <div class="d-flex mb-3">
-                                <button onclick="checkLogin();" class="btn btn-lg  ms-5 bg-info shadow-none custom-bg"> Book Now </button>
+                                <button type="submit" onclick="checkLogin();" class="btn btn-lg  ms-5 bg-info shadow-none custom-bg"> Book Now </button>
                                 <a href="rooms.php" class="btn btn-lg ms-5  btn-dark shadow-none custom-bg"> Cancel </a>
                             </div>
                         </div>
@@ -104,7 +114,6 @@ $login=userLogin();
                         
                     </div>                         
                 </div>
-    
     <?php            
             } else {
                 echo "Error executing the query: " . mysqli_error($con);
@@ -120,19 +129,47 @@ $login=userLogin();
     function checkLogin(){
         <?php
         if ($login) {
-            echo "Swal.fire({
-                title: 'Book Room ? ',
-                text: 'You Are Really want to Book this Room ',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Book Now!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                  simpleAlert('Well Done !','Room Booked Successfully','success');
-                }
-            })";
+            echo "
+            var checkin=$('#check-in').val();
+            var checkout=$('#check-out').val();
+            if(checkin){
+                Swal.fire({
+                    title: 'Book Room ? ',
+                    text: 'You Are Really want to Book this Room ',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Book Now!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url:'Admin/ajax/book.php',
+                            method:'POST',
+                            data:{roomid:$_GET[room],uid:$_SESSION[userId],checkin:checkin,checkout:checkout}
+                          }).then(()=>{
+                            Swal.fire({
+                                title: 'Well Done !',
+                                text: 'Room Booked Successfully',
+                                icon: 'success',
+                                confirmButtonText: 'Ok'
+                            }).then(()=>{
+                                window.location.href='/hotel-php-website/Admin/recipt.php?roomid=$_GET[room]&uid=$_SESSION[userId]&checkin='+checkin+'&checkout='+checkout;
+                            })
+                          });
+                    }
+                })
+            }
+            else{
+                Swal.fire({
+                    title: 'SomeThing Missing !',
+                    text: 'For Room Booke Check in and check out date require',
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                });
+                return;
+            }
+            ";
         }else{
             echo "Swal.fire({
                 title: 'Login? 😒',
