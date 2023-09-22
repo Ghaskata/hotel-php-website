@@ -31,6 +31,9 @@
                     <li class="nav-item">
                         <a href="booked_room.php" class="nav-link text-white">Booked Room</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="user.php" class="nav-link text-white">User Detail</a>
+                    </li>
                 </ul>
             </div>
         </div>

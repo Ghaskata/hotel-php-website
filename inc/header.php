@@ -204,7 +204,11 @@
               setTimeout(() => {
                 location.reload();
               }, 1500);
-          }else{
+          }
+          else if(data=='admin found'){
+              window.location.href='Admin/index.php';
+          }
+          else{
             <?php simpleAlertForScript("User Not exist !","user not found create a new account.","error");?>
           }
         },

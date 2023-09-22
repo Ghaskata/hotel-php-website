@@ -45,16 +45,25 @@
     if (isset($_POST['LoginName'])&&isset($_POST['LoginPass'])) {
         $uname=mysqli_real_escape_string($con,$_POST['LoginName']);
         $pass=$_POST['LoginPass'];
-        $sql="SELECT * FROM `usertbl` WHERE `uname`='$uname' AND `password`=md5('$pass');";
-        $res=mysqli_query($con,$sql);
-        if(mysqli_num_rows($res)==1){
-            session_start();
-            $row=mysqli_fetch_assoc($res);
-            $_SESSION['userLogin']=true;
-            $_SESSION['userId']=$row['id'];
-            echo "found";
-        }else{
-            echo "User Not Found";
+        if ($uname=='admin') {
+            $sql="SELECT * FROM `usertbl` WHERE `uname`='$uname' AND `password`=md5('$pass');";
+            $res=mysqli_query($con,$sql);
+            if(mysqli_num_rows($res)==1){
+                echo "admin found";
+            }
+        }
+        else{
+            $sql="SELECT * FROM `usertbl` WHERE `uname`='$uname' AND `password`=md5('$pass');";
+            $res=mysqli_query($con,$sql);
+            if(mysqli_num_rows($res)==1){
+                session_start();
+                $row=mysqli_fetch_assoc($res);
+                $_SESSION['userLogin']=true;
+                $_SESSION['userId']=$row['id'];
+                echo "found";
+            }else{
+                echo "User Not Found";
+            }
         }
     }
 ?>

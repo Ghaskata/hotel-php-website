@@ -179,17 +179,27 @@ $login=userLogin();
                         $.ajax({
                             url:'Admin/ajax/book.php',
                             method:'POST',
-                            data:{roomid:$_GET[room],uid:$_SESSION[userId],checkin:checkin,checkout:checkout}
-                          }).then(()=>{
-                            Swal.fire({
-                                title: 'Well Done !',
-                                text: 'Room Booked Successfully',
-                                icon: 'success',
-                                confirmButtonText: 'Ok'
-                            }).then(()=>{
-                                window.location.href='/hotel-php-website/Admin/recipt.php?roomid=$_GET[room]&uid=$_SESSION[userId]&checkin='+checkin+'&checkout='+checkout;
-                            })
-                          });
+                            data:{roomid:$_GET[room],uid:$_SESSION[userId],checkin:checkin,checkout:checkout},
+                            success:function(data){
+                                if(data=='yes'){
+                                    Swal.fire({
+                                        title: 'Well Done !',
+                                        text: 'Room Booked Successfully',
+                                        icon: 'success',
+                                        confirmButtonText: 'Ok'
+                                    }).then(()=>{
+                                        window.location.href='/hotel-php-website/Admin/recipt.php?roomid=$_GET[room]&uid=$_SESSION[userId]&checkin='+checkin+'&checkout='+checkout;
+                                    })
+                                }else{
+                                    Swal.fire({
+                                        title: 'Sorry !',
+                                        text: 'Room Alredy Booked',
+                                        icon: 'warning',
+                                        confirmButtonText: 'Ok'
+                                    })
+                                }
+                            }
+                        })
                     }
                 })
             }
