@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2023 at 10:09 AM
+-- Generation Time: Sep 22, 2023 at 05:01 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -294,7 +294,10 @@ CREATE TABLE `tblbooking` (
 INSERT INTO `tblbooking` (`id`, `checkin`, `checkout`, `uid`, `rid`, `bookingDate`, `total_day`) VALUES
 (11, '2023-09-17', '2023-09-19', 9, 20, '2023-09-19 16:46:58', 2),
 (12, '2023-09-19', '2023-09-27', 9, 23, '2023-09-19 16:49:45', 8),
-(19, '2023-09-19', '2023-09-25', 11, 20, '2023-09-22 12:35:38', 6);
+(19, '2023-09-19', '2023-09-25', 11, 20, '2023-09-22 12:35:38', 6),
+(20, '2023-09-10', '2023-09-15', 11, 18, '2023-09-22 20:26:22', 5),
+(21, '2023-10-01', '2023-10-20', 11, 23, '2023-09-22 20:27:51', 19),
+(22, '2023-09-12', '2023-09-20', 13, 21, '2023-09-22 20:30:25', 8);
 
 -- --------------------------------------------------------
 
@@ -351,7 +354,8 @@ INSERT INTO `usertbl` (`id`, `name`, `uname`, `phone`, `email`, `address`, `pass
 (9, 'emma', 'emma', 7890567898, '7890567898', 'b/123 gita soc,surat', '00a809937eddc44521da9521269e75c6', 1, '2023-09-12 23:41:49'),
 (10, 'sita', 'sita', 7890567898, 'sita@gmail.com', 'sitanagar surat', '803205ab3f1b9b6fa6990393f5ac6b58', 1, '2023-09-13 19:48:32'),
 (11, 'zili', 'zili', 7890567898, 'zili@gmail.com', 'zili housing road , surat', '98337a88a988f20dcd4e2dc0ad53e508', 1, '2023-09-13 19:49:54'),
-(12, 'admin', 'admin', 7890567898, 'admin@gmail.com', '12/shiva nagar ,surat ,gujatrat', '21232f297a57a5a743894a0e4a801fc3', 1, '2023-09-22 10:26:58');
+(12, 'admin', 'admin', 7890567898, 'admin@gmail.com', '12/shiva nagar ,surat ,gujatrat', '21232f297a57a5a743894a0e4a801fc3', 1, '2023-09-22 10:26:58'),
+(13, 'mita', 'mita', 7890567898, 'miteshwari@gmail.com', 'b/102 sitanagar society ,katargam ,vedroad ,surat', 'bae3d929b274a4cd35c38fe92f059f1a', 1, '2023-09-22 20:30:00');
 
 -- --------------------------------------------------------
 
@@ -544,13 +548,13 @@ ALTER TABLE `room_type`
 -- AUTO_INCREMENT for table `tblbooking`
 --
 ALTER TABLE `tblbooking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `usertbl`
 --
 ALTER TABLE `usertbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user_query`
