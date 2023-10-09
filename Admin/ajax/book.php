@@ -9,6 +9,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     $checkout=$_POST['checkout'];
 
     $sql_2="SELECT * FROM `tblbooking` WHERE `checkout` > '$checkin' AND `rid`='$roomid'";
+    // $sql_2="SELECT * FROM `tblbooking` WHERE `checkin` <= '$checkout' AND `checkout` => '$checkin' AND `rid`='$roomid'";
+    
     $res_2=mysqli_query($con,$sql_2);
     if ($res_2->num_rows>=1) {
         echo "already booked";

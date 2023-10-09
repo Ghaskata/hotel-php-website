@@ -71,11 +71,11 @@ $login=userLogin();
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="check-in" class="form-lable mb-2" style="font-size: 500;">Check-In</label>
-                                    <input type="date" class="form-control shadow-none" name="check-in" id="check-in" required>
+                                    <input type="date" min="<?= date('Y-m-d'); ?>" class="form-control shadow-none" name="check-in" id="check-in" required>
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="check-out" class="form-lable mb-2" style="font-size: 500;">Check-Out</label>
-                                    <input type="date" class="form-control shadow-none" name="check-out" id="check-out" required>
+                                    <input type="date" min="<?= date("Y-m-d"); ?>" class="form-control shadow-none" name="check-out" id="check-out" required>
                                 </div>
                             </div>                                              
                         <div class="row">
