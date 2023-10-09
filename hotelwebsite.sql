@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2023 at 05:01 PM
+-- Generation Time: Oct 09, 2023 at 09:07 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -297,7 +297,11 @@ INSERT INTO `tblbooking` (`id`, `checkin`, `checkout`, `uid`, `rid`, `bookingDat
 (19, '2023-09-19', '2023-09-25', 11, 20, '2023-09-22 12:35:38', 6),
 (20, '2023-09-10', '2023-09-15', 11, 18, '2023-09-22 20:26:22', 5),
 (21, '2023-10-01', '2023-10-20', 11, 23, '2023-09-22 20:27:51', 19),
-(22, '2023-09-12', '2023-09-20', 13, 21, '2023-09-22 20:30:25', 8);
+(22, '2023-09-12', '2023-09-20', 13, 21, '2023-09-22 20:30:25', 8),
+(23, '2023-10-04', '2023-10-05', 9, 20, '2023-10-04 21:24:07', 1),
+(24, '2023-11-08', '2023-11-09', 9, 20, '2023-10-04 21:24:44', 1),
+(26, '2023-10-04', '2023-10-11', 9, 18, '2023-10-04 21:34:20', 7),
+(29, '2023-12-01', '2023-12-15', 13, 20, '2023-10-04 23:10:01', 14);
 
 -- --------------------------------------------------------
 
@@ -350,7 +354,6 @@ INSERT INTO `usertbl` (`id`, `name`, `uname`, `phone`, `email`, `address`, `pass
 (5, 'arch', 'asu', 7890567898, '7890567898', 'A / 153 , shivsagar soc. , surat  ', '45d282e7fed55b485182393f7bc6292d', 1, '2023-09-01 23:19:59'),
 (6, 'gita1', 'gira1', 7890567898, '7890567898', '104 /radhe soc. ,surat', '35e31e606021b85485cea95f4ce21f7d', 1, '2023-09-01 23:32:44'),
 (7, 'babita', 'babita@$%!123', 7890567898, '7890567898', '103/gokuldham soc. , guaregav , mumbai ', '20fe687d58d6295cd94ba4f4ffe4bab4', 1, '2023-09-02 00:36:54'),
-(8, 'admin12', 'admin12', 1234567893, 'admin12@gmail.com', 'admin panel', 'admin12', 1, '2023-09-04 23:41:17'),
 (9, 'emma', 'emma', 7890567898, '7890567898', 'b/123 gita soc,surat', '00a809937eddc44521da9521269e75c6', 1, '2023-09-12 23:41:49'),
 (10, 'sita', 'sita', 7890567898, 'sita@gmail.com', 'sitanagar surat', '803205ab3f1b9b6fa6990393f5ac6b58', 1, '2023-09-13 19:48:32'),
 (11, 'zili', 'zili', 7890567898, 'zili@gmail.com', 'zili housing road , surat', '98337a88a988f20dcd4e2dc0ad53e508', 1, '2023-09-13 19:49:54'),
@@ -548,7 +551,7 @@ ALTER TABLE `room_type`
 -- AUTO_INCREMENT for table `tblbooking`
 --
 ALTER TABLE `tblbooking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `usertbl`
